@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 14:51:38 by dabdygal          #+#    #+#              #
-#    Updated: 2024/02/20 19:15:00 by akeryan          ###   ########.fr        #
+#    Updated: 2024/03/18 15:00:34 by dabdygal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,7 @@ LIB_NAME	= libft.a
 
 CC			= cc
 
-INCLUDE_DIR = ../include
-
-CFLAGS		= -Wall -Wextra -Werror -I $(INCLUDE_DIR)
+CFLAGS		= -Wall -Wextra -Werror
 
 SRC_FILES 	= ft_memset.c \
 			  ft_bzero.c  \

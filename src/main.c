@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/03/18 15:58:00 by dabdygal         ###   ########.fr       */
+/*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
+/*   Updated: 2024/03/18 15:56:45 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include <stdlib.h>
 
-#endif
+int	main(int argc, char *argv[])
+{
+	return (EXIT_SUCCESS);
+}
