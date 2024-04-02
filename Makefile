@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/02 14:24:58 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/02 17:24:57 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ BIN_NAME = cub3d
 
 SRC_DIR = src
 
-SRC_FILES = main.c
+SRC_FILES = main.c	\
+			init.c	\
+			hooks.c	\
+			render.c
 
 INCLUDE_DIR = include
 
@@ -43,7 +46,7 @@ $(addprefix $(LIBFT_DIR)/,$(LIBFT_NAME)):
 	make $(LIBFT_NAME) -C $(LIBFT_DIR)
 
 $(addprefix $(LIBMLX_DIR)/,$(LIBMLX_NAME)):
-	make $(LIBMLX_NAME) -C $(LIBMLX_DIR)
+	make $(LIBMLX_NAME) -C $(LIBMLX_DIR) CFLAGS=-Wno-deprecated
 
 all: $(BIN_NAME)
 

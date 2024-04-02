@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/02 17:18:58 by akeryan          ###   ########.fr       */
+/*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
+/*   Updated: 2024/04/02 17:20:45 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
+int	key_handler(int key, t_data *d)
 {
-	t_data	d;
-	
-	(void) argc;
-	(void) argv;
-	init(&d);
-	mlx_key_hook(d.win, key_handler, &d);
-	mlx_hook(d.win, 17, 0, close_window, NULL);
-	mlx_loop(d.mlx);
+	if (key == ESC)
+		close_window();
+	render(d);
+	return (0);
+}
 
-	return (EXIT_SUCCESS);
+int	close_window(void)
+{
+	exit(0);
+	return (0);
 }

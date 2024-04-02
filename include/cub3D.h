@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/02 14:42:59 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:24:07 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "libft.h"
+# include <stdlib.h>
+# include "libft.h"
+# include "mlx.h"
 
 # define WINDOW_WIDTH	1600
 # define WINDOW_HEIGHT	1200
 
+# define ESC		53
 # define KEY_7		89	
 # define KEY_8		91
 # define KEY_UP		13
@@ -39,5 +42,12 @@ typedef struct s_data
 	int		width;
 	int		height;
 }	t_data;
+
+void		init(t_data *d);
+void		render(t_data *d);
+
+//hooks
+int			close_window(void);
+int			key_handler(int key, t_data *d);
 
 #endif

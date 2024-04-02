@@ -6,13 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/02 14:30:39 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/02 17:13:33 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-void	init(t_data *d, char *str)
+void	init(t_data *d)
 {
 	d->width = WINDOW_WIDTH;
 	d->height = WINDOW_HEIGHT;
