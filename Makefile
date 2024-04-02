@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
+#    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/03/18 15:55:34 by dabdygal         ###   ########.fr        #
+#    Updated: 2024/04/02 14:24:58 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # *********************************INITIALIZE********************************* #
 
-BIN_NAME = cub3D
+BIN_NAME = cub3d
 
 SRC_DIR = src
 
@@ -20,7 +20,7 @@ SRC_FILES = main.c
 
 INCLUDE_DIR = include
 
-INCLUDE_FILES = cub3D.h
+INCLUDE_FILES = cub3d.h
 
 LIBFT_NAME = libft.a
 
