@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
+#    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/02 17:24:57 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/04 13:10:02 by dabdygal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC_DIR = src
 SRC_FILES = main.c	\
 			init.c	\
 			hooks.c	\
-			render.c
+			render.c \
+			is_valid_sdf.c
 
 INCLUDE_DIR = include
 
