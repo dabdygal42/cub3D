@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/04 13:08:00 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:58:56 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 int	main(int argc, char *argv[])
 {
-	t_data	d;
+	t_data		d;
+	t_g_assets	content;
 
-	if (is_valid_sdf(argc, argv) <= 0)
+	if (parse(argc, argv, &content) <= 0)
 		return (EXIT_FAILURE);
 	init(&d);
 	mlx_key_hook(d.win, key_handler, &d);

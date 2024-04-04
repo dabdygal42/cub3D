@@ -6,7 +6,7 @@
 #    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/04 13:10:02 by dabdygal         ###   ########.fr        #
+#    Updated: 2024/04/04 16:00:28 by dabdygal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_FILES = main.c	\
 			init.c	\
 			hooks.c	\
 			render.c \
-			is_valid_sdf.c
+			parse.c
 
 INCLUDE_DIR = include
 

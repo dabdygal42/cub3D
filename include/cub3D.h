@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/04 13:12:17 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:00:15 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ typedef struct s_data
 	int		height;
 }	t_data;
 
+typedef struct s_game_assets
+{
+}	t_g_assets;
+
 void		init(t_data *d);
 void		render(t_data *d);
 
@@ -51,6 +55,6 @@ int			close_window(void);
 int			key_handler(int key, t_data *d);
 
 //parsing
-int			is_valid_sdf(int argc, char *argv[]);
+int			parse(int argc, char *argv[], t_g_assets *content);
 
 #endif
