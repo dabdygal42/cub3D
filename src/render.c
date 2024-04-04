@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/02 17:18:58 by akeryan          ###   ########.fr       */
+/*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
+/*   Updated: 2024/04/02 14:35:02 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
+void	render(t_data *d)
 {
-	t_data	d;
-	
-	(void) argc;
-	(void) argv;
-	init(&d);
-	mlx_key_hook(d.win, key_handler, &d);
-	mlx_hook(d.win, 17, 0, close_window, NULL);
-	mlx_loop(d.mlx);
-
-	return (EXIT_SUCCESS);
+	if (!d->img)
+	{
+		d->img = mlx_new_image(d->mlx, d->width, d->height);
+		d->buf = mlx_get_data_addr(d->img, &d->pix_bits, &d->l_bytes, &d->endi);
+		d->buf_size = d->height * d->l_bytes;
+	}
+	ft_bzero(d->buf, d->buf_size);
+	//draw_image
+	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 }

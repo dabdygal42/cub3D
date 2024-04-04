@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/02 17:18:58 by akeryan          ###   ########.fr       */
+/*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
+/*   Updated: 2024/04/02 17:13:33 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
+void	init(t_data *d)
 {
-	t_data	d;
-	
-	(void) argc;
-	(void) argv;
-	init(&d);
-	mlx_key_hook(d.win, key_handler, &d);
-	mlx_hook(d.win, 17, 0, close_window, NULL);
-	mlx_loop(d.mlx);
-
-	return (EXIT_SUCCESS);
+	d->width = WINDOW_WIDTH;
+	d->height = WINDOW_HEIGHT;
+	d->mlx = mlx_init();
+	d->win = mlx_new_window(d->mlx, d->width, d->height, "CUB3D");
+	d->img = NULL;
 }
