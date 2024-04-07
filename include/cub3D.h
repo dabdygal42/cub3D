@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/02 17:24:07 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/07 21:08:39 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 # define CUB3D_H
 
 # include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
 # include "libft.h"
 # include "mlx.h"
 
-# define WINDOW_WIDTH	1600
-# define WINDOW_HEIGHT	1200
+# define SCREEN_WIDTH	640	
+# define SCREEN_HEIGHT	480	
+# define TEX_WIDTH		256
+# define TEX_HEIGHT		256
+# define MAP_WIDTH		24
+# define MAP_HEIGHT		24
 
 # define ESC		53
 # define KEY_7		89	
@@ -39,15 +45,43 @@ typedef struct s_data
 	void	*img;
 	char	*buf;
 	int		buf_size;
-	int		width;
-	int		height;
+	int		map_width;
+	int 	map_heigth;
+	int		screen_width;
+	int		screen_height;
+	int		**world_map;
+	double 	pos_x;
+	double 	pos_y;
+	double	dir_x;
+	double	dir_y;	
+	double	plane_x;
+	double  plane_y;
+	double	time;
+	double	old_time;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int 	map_x;
+	int 	map_y;
+	double 	side_dist_x;
+	double	side_dist_y;
+	double 	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		side;
 }	t_data;
 
 void		init(t_data *d);
 void		render(t_data *d);
+void		run(t_data *d);
 
 //hooks
 int			close_window(void);
 int			key_handler(int key, t_data *d);
+
+//utils
+void		print_map(int **arr, int rows, int cols);
 
 #endif

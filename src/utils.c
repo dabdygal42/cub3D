@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/07 21:13:41 by akeryan          ###   ########.fr       */
+/*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
+/*   Updated: 2024/04/07 16:19:08 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
+void print_map(int **arr, int rows, int cols)
 {
-	t_data	d;
-	
-	(void) argc;
-	(void) argv;
-	init(&d);
-	//print_map(d.world_map, MAP_WIDTH, MAP_HEIGHT);
-	//run(&d);
-	render(&d);
-	mlx_key_hook(d.win, key_handler, &d);
-	mlx_hook(d.win, 17, 0, close_window, NULL);
-	mlx_loop(d.mlx);
-	return (EXIT_SUCCESS);
+	int	a, b;
+
+	a = -1;
+	b = -1;
+	while (++a < rows)	
+	{
+		while (++b < cols)
+			printf("%d ", arr[a][b]);
+		printf("\n");
+		b = -1;
+	}
 }

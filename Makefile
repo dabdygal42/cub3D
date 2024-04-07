@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/02 17:24:57 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/07 16:51:09 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRC_DIR = src
 SRC_FILES = main.c	\
 			init.c	\
 			hooks.c	\
-			render.c
+			render.c \
+			utils.c	\
+			run.c
 
 INCLUDE_DIR = include
 
