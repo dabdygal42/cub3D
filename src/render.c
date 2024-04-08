@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 10:05:17 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 13:55:40 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,28 @@ static void	update_vars(int x, t_data *d)
 	update_vars_(d);
 }
 
+static void	draw_image(t_data *d)
+{
+	int		step;
+	double	tex_pos;
+
+	d->tex_num = d->world_map[d->map_x][d->map_y] - 1;
+	if (d->side == 0)
+		d->wall_x = d->pos_y + d->perp_wall_dist * d->ray_dir_y;
+	else
+		d->wall_x = d->pos_x + d->perp_wall_dist * d->ray_dir_x;
+	d->wall_x -= floor(d->wall_x);
+	d->tex_x = (int)(d->wall_x * (double)TEX_WIDTH);
+	//why in both cases the assignment is the same?
+	if (d->side == 0 && d->ray_dir_x > 0)
+		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
+	if (d->side == 1 && d->ray_dir_y < 0)
+		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
+	step = 1.0 * (int)TEX_HEIGHT / d->line_height;
+	tex_pos = (d->draw_start - d->pitch - d->screen_height / 2 + d->line_height / 2) * step;
+	
+
+}
 
 void	render(t_data *d)
 {
@@ -88,7 +110,8 @@ void	render(t_data *d)
 		update_vars(x, d);
 		run_dda(d);
 		calc_start_end(d);
+		draw_image(d);
 		x++;
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
-}
+};

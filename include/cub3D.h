@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/08 09:58:13 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 18:38:52 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # define SCREEN_WIDTH	640	
 # define SCREEN_HEIGHT	480	
-# define TEX_WIDTH		256
-# define TEX_HEIGHT		256
+# define TEX_WIDTH		32	
+# define TEX_HEIGHT		32	
 # define MAP_WIDTH		24
 # define MAP_HEIGHT		24
 
@@ -75,6 +75,10 @@ typedef struct s_data
 	int		pitch;
 	int		draw_start;
 	int		draw_end;
+	int		tex_num;
+	double	wall_x;
+	int		tex_x;
+	int		*texture;
 }	t_data;
 
 void		init(t_data *d);
@@ -86,6 +90,7 @@ int			close_window(void);
 int			key_handler(int key, t_data *d);
 
 //utils
-void		print_map(int **arr, int rows, int cols);
+void		print_map_2d(int **arr, int rows, int cols);
+void		print_map_1d(int *arr, int cols, int rows);
 
 #endif

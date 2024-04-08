@@ -6,13 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 09:40:50 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 18:42:22 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void print_map(int **arr, int rows, int cols)
+void print_map_2d(int **arr, int rows, int cols)
 {
 	int	a, b;
 
@@ -24,6 +24,21 @@ void print_map(int **arr, int rows, int cols)
 			printf("%d ", arr[a][b]);
 		printf("\n");
 		b = -1;
+	}
+}
+
+void print_map_1d(int *arr, int cols, int rows)
+{
+	int x, y;
+
+	x = -1;
+	y = -1;
+	while (++x < rows)
+	{
+		while (++y < cols)
+			printf ("%d\t", arr[rows * x + y]);
+		printf("\n");
+		y = -1;
 	}
 }
 

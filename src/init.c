@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 09:55:42 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 19:34:10 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,34 @@ static int **map_init()
 	return (outmap);
 }
 
+static int	*init_texture(void)
+{
+	int	*texture;
+	int	x, y;
+	int	ycolor;
+
+	texture = (int *)malloc(TEX_WIDTH * TEX_HEIGHT * sizeof(int));
+	if (texture == NULL)
+	{
+		printf("Memory allocation failed in init_texture()\n");
+		return (NULL);
+	}
+	x = -1;
+	y = -1;
+	ycolor = 0;
+	while (++x < TEX_WIDTH)
+	{
+		while (++y < TEX_HEIGHT)
+		{
+			ycolor = y * 256 / TEX_HEIGHT;
+			//ycolor++;
+			texture[TEX_WIDTH * y + x] = 65536 * ycolor;
+		}
+		y = -1;
+	}
+	return (texture);
+}
+
 void	init(t_data *d)
 {
 	d->map_width = MAP_WIDTH;
@@ -87,4 +115,5 @@ void	init(t_data *d)
 	d->time = 0.0;
 	d->old_time = 0.0;
 	d->pitch = 100;
+	d->texture = init_texture();
 }

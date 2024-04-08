@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:38:40 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/07 16:50:25 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 18:37:34 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 #include "quickcg.h"
 using namespace QuickCG;
 
-#define screenWidth 640
-#define screenHeight 480
-#define texWidth 64
-#define texHeight 64
-#define mapWidth 24
-#define mapHeight 24
+#define screenWidth		640
+#define screenHeight	480
+#define texWidth		32 
+#define texHeight		32 
+#define mapWidth		24
+#define mapHeight		24
 
 int worldMap[mapWidth][mapHeight]=
 {
