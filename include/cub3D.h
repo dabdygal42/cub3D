@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/07 21:08:39 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 09:41:11 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_data
 
 void		init(t_data *d);
 void		render(t_data *d);
-void		run(t_data *d);
+void		run_dda(t_data *d);
 
 //hooks
 int			close_window(void);
