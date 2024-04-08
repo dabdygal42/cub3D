@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 13:55:40 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 19:50:18 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ static void	update_vars(int x, t_data *d)
 static void	draw_image(t_data *d)
 {
 	int		step;
+	int		y;
 	double	tex_pos;
+	int		tex_y;
+	int		color;
 
 	d->tex_num = d->world_map[d->map_x][d->map_y] - 1;
 	if (d->side == 0)
@@ -89,15 +92,19 @@ static void	draw_image(t_data *d)
 		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
 	step = 1.0 * (int)TEX_HEIGHT / d->line_height;
 	tex_pos = (d->draw_start - d->pitch - d->screen_height / 2 + d->line_height / 2) * step;
-	
-
+	y = 0;
+	while (y < d->draw_end)
+	{
+		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
+		tex_pos += step;
+		color = d->texture[TEX_HEIGHT * tex_y + d->tex_x];
+		d->buf[y * d->l_bytes + d->x] = color;
+		y++;
+	}
 }
 
 void	render(t_data *d)
 {
-	int	x;
-
-	x = 0;
 	if (!d->img)
 	{
 		d->img = mlx_new_image(d->mlx, d->screen_width, d->screen_height);
@@ -105,13 +112,13 @@ void	render(t_data *d)
 		d->buf_size = d->screen_height * d->l_bytes;
 	}
 	ft_bzero(d->buf, d->buf_size);
-	while (x < SCREEN_WIDTH)
+	while (d->x < SCREEN_WIDTH)
 	{
-		update_vars(x, d);
+		update_vars(d->x, d);
 		run_dda(d);
 		calc_start_end(d);
 		draw_image(d);
-		x++;
+		d->x++;
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 };

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/08 18:38:52 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 19:49:15 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_data
 	double	wall_x;
 	int		tex_x;
 	int		*texture;
+	int		x;
 }	t_data;
 
 void		init(t_data *d);

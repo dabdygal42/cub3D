@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 19:34:10 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 19:49:27 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static int	*init_texture(void)
 
 void	init(t_data *d)
 {
+	d->x = 0;
 	d->map_width = MAP_WIDTH;
 	d->map_heigth = MAP_HEIGHT;
 	d->screen_height = SCREEN_HEIGHT;
