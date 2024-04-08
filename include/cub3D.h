@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/08 09:41:11 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 09:58:13 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,35 @@ typedef struct s_data
 	char	*buf;
 	int		buf_size;
 	int		map_width;
-	int 	map_heigth;
+	int		map_heigth;
 	int		screen_width;
 	int		screen_height;
 	int		**world_map;
-	double 	pos_x;
-	double 	pos_y;
+	double	pos_x;
+	double	pos_y;
 	double	dir_x;
 	double	dir_y;	
 	double	plane_x;
-	double  plane_y;
+	double	plane_y;
 	double	time;
 	double	old_time;
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
-	int 	map_x;
-	int 	map_y;
-	double 	side_dist_x;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
 	double	side_dist_y;
-	double 	delta_dist_x;
+	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
 	int		step_x;
 	int		step_y;
 	int		side;
+	int		line_height;
+	int		pitch;
+	int		draw_start;
+	int		draw_end;
 }	t_data;
 
 void		init(t_data *d);

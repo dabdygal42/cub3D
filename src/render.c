@@ -6,22 +6,29 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 09:45:09 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/08 10:05:17 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//static void draw_image(t_data *d)
-//{
-	//if (d->side == 0)
-		//d->perp_wall_dist = d->side_dist_x - d->delta_dist_x;
-	//else
-		//d->perp_wall_dist = d->side_dist_y - d->delta_dist_y;
-//}
+static void	calc_start_end(t_data *d)
+{
+	if (d->side == 0)
+		d->perp_wall_dist = d->side_dist_x - d->delta_dist_x;
+	else
+		d->perp_wall_dist = d->side_dist_y - d->delta_dist_y;
+	d->line_height = (int)(d->screen_height / d->perp_wall_dist);
+	d->draw_start = -d->line_height / 2 + d->screen_height / 2 + d->pitch;
+	if (d->draw_start < 0)
+		d->draw_start = 0;
+	d->draw_end = d->line_height / 2 + d->screen_height / 2 + d->pitch;
+	if (d->draw_end >= d->screen_height)
+		d->draw_end = d->screen_height - 1;
+}
 
 
-static void	update_vars2(t_data *d)
+static void	update_vars_(t_data *d)
 {
 	if (d->ray_dir_x < 0)
 	{
@@ -60,7 +67,7 @@ static void	update_vars(int x, t_data *d)
 		d->delta_dist_y = 1e30;
 	else
 		d->delta_dist_y = fabs(1 / d->ray_dir_y);
-	update_vars2(d);
+	update_vars_(d);
 }
 
 
@@ -80,6 +87,7 @@ void	render(t_data *d)
 	{
 		update_vars(x, d);
 		run_dda(d);
+		calc_start_end(d);
 		x++;
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
