@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 16:38:18 by akeryan          ###   ########.fr       */
+/*   Created: 2024/04/09 19:14:51 by akeryan           #+#    #+#             */
+/*   Updated: 2024/04/09 21:37:25 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "cub3d.h"
 
-int	main(int argc, char *argv[])
+void get_move_rot_speeds(t_data *d)
 {
-	t_data	d;
-	
-	(void) argc;
-	(void) argv;
-	init(&d);
-	print_map_2d(d.world_map, MAP_HEIGHT, MAP_WIDTH);
-	render(&d);
-	mlx_key_hook(d.win, key_handler, &d);
-	mlx_hook(d.win, 17, 0, close_window, NULL);
-	mlx_loop(d.mlx);
-	return (EXIT_SUCCESS);
+	d->old_time = d->time;
+	d->time = get_time();
+	d->frame_time = (d->time - d->old_time) / 1000.0;
+	d->move_speed = d->frame_time * 30.0;
+	d->rot_speed = d->frame_time * 3.0;
+	printf("frame time: %.4Lf\n", d->frame_time);
+	printf("fps: %.4Lf\n", 1 / d->frame_time);
 }

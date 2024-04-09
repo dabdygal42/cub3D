@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 14:01:22 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/09 19:42:24 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <sys/time.h>
 # include "libft.h"
 # include "mlx.h"
+
+# define LONG			long long int
 
 # define SCREEN_WIDTH	1200	
 # define SCREEN_HEIGHT	800
@@ -56,8 +59,8 @@ typedef struct s_data
 	double	dir_y;	
 	double	plane_x;
 	double	plane_y;
-	double	time;
-	double	old_time;
+	LONG	time;
+	LONG	old_time;
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -72,19 +75,22 @@ typedef struct s_data
 	int		step_y;
 	int		side;
 	int		line_height;
-	int		shift;
+	int		view_shift;
 	int		draw_start;
 	int		draw_end;
 	int		tex_num;
 	double	wall_x;
 	int		tex_x;
 	int		*texture;
-	int		x;
+	long double	frame_time;
+	double	move_speed;
+	double	rot_speed;
 }	t_data;
 
 void		init(t_data *d);
 void		render(t_data *d);
 void		run_dda(t_data *d);
+void		get_move_rot_speeds(t_data *d);
 
 //hooks
 int			close_window(void);
@@ -93,5 +99,8 @@ int			key_handler(int key, t_data *d);
 //utils
 void		print_map_2d(int **arr, int rows, int cols);
 void		print_map_1d(int *arr, int cols, int rows);
+int			error_msg(char *str, t_data *data);
+LONG		get_time(void);
+void		destroy(t_data *d);
 
 #endif

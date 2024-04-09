@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/08 18:42:22 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/09 18:46:34 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,27 @@ void run_dda(t_data *d)
 		if (d->world_map[d->map_x][d->map_y] > 0)
 			hit = 1;
 	}
+}
+
+LONG	get_time(void)
+{
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL))
+		return (error_msg("gettimeofday() failed in get_time()\n", NULL));
+	return ((tv.tv_sec * (LONG)1000) + (tv.tv_usec / 1000));
+}
+
+int	error_msg(char *str, t_data *data)
+{
+	printf("%s\n", str);
+	if (data)
+		destroy(data);
+	return (1);
+}
+
+void	destroy(t_data *d)
+{
+	(void)d;
+	return ;
 }
