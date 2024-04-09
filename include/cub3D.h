@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/04 16:00:15 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:16:36 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_data
 
 typedef struct s_game_assets
 {
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		floor_rgb[3];
+	int		ceil_rgb[3];
+	int		**map;
 }	t_g_assets;
 
 void		init(t_data *d);

@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/04 16:04:34 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:35:03 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "libft.h"
 #include <fcntl.h>
 #include <stdio.h>
+#include <errno.h>
+#include <stdlib.h>
 
 static int	check_open_warn(int argc, char *argv[])
 {
@@ -44,13 +46,38 @@ static int	check_open_warn(int argc, char *argv[])
 	return (fd);
 }
 
-//Check if scene description file is valid
+static int	parse_elements(int fd, t_g_assets *c)
+{
+	char	*str;
+
+	str = get_next_line(fd);
+	while (str)
+	{
+		if (parse_line(str, c) <= 0)
+		{
+			free(str);
+			return (0);
+		}
+		free(str);
+		str = get_next_line(fd);
+	}
+	if (errno != 0)
+	{
+		write(STDERR_FILENO, "Error\n", 6);
+		perror(NULL);
+		return (-1);
+	}
+	return (1);
+}
+
 int	parse(int argc, char *argv[], t_g_assets *content)
 {
 	int	fd;
 
 	fd = check_open_warn(argc, argv);
 	if (fd < 0)
+		return (0);
+	if (parse_elements(fd, content) <= 0)
 		return (0);
 	if (close(fd) < 0)
 	{
