@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 14:35:03 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:59:44 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,30 @@ static int	check_open_warn(int argc, char *argv[])
 	return (fd);
 }
 
-static int	parse_elements(int fd, t_g_assets *c)
+static int	parse_line(char *str, t_g_assets *c)
+{
+	static int	map_done;
+	int			i;
+
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == 0)
+	{
+		if (map_done == 0 && c->row_list)
+			map_done = 1;
+		return (1);
+	}
+}
+
+static int	parse_elements(int fd, t_g_assets *content)
 {
 	char	*str;
 
 	str = get_next_line(fd);
 	while (str)
 	{
-		if (parse_line(str, c) <= 0)
+		if (parse_line(str, content) <= 0)
 		{
 			free(str);
 			return (0);

@@ -1,7 +1,7 @@
-NO ./content/north.xpm
-SO	./content/south.xpm
+   NO ./content/north.xpm
+		SO	./content/south.xpm
 WE ./content/west.xpm
-EA ./content/east.xpm
+  EA ./content/east.xpm
 F	220,100,0
 C 225,30,0
         1111111111111111111111111

@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 14:16:36 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:49:12 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,24 @@ typedef struct s_data
 	int		height;
 }	t_data;
 
+typedef struct s_row_list
+{
+	int					*row;
+	struct s_row_list	*next;
+}	t_row_list;
+
 typedef struct s_game_assets
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		floor_rgb[3];
-	int		ceil_rgb[3];
-	int		**map;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	int			floor_rgb[3];
+	int			ceil_rgb[3];
+	int			**map_arr;
+	t_row_list	*row_list;
+	int			row_qty;
+	int			col_qty;
 }	t_g_assets;
 
 void		init(t_data *d);
