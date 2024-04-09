@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/08 19:49:15 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:01:22 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define SCREEN_WIDTH	640	
-# define SCREEN_HEIGHT	480	
-# define TEX_WIDTH		32	
-# define TEX_HEIGHT		32	
+# define SCREEN_WIDTH	1200	
+# define SCREEN_HEIGHT	800
+# define TEX_WIDTH		64	
+# define TEX_HEIGHT		64	
 # define MAP_WIDTH		24
 # define MAP_HEIGHT		24
 
@@ -72,7 +72,7 @@ typedef struct s_data
 	int		step_y;
 	int		side;
 	int		line_height;
-	int		pitch;
+	int		shift;
 	int		draw_start;
 	int		draw_end;
 	int		tex_num;

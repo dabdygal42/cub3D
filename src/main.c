@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/08 19:52:19 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/09 11:01:34 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ int	main(int argc, char *argv[])
 	(void) argc;
 	(void) argv;
 	init(&d);
-	//print_map(d.world_map, MAP_WIDTH, MAP_HEIGHT);
+
+	printf("pos_x: %d\n", (int)d.pos_x);
+	printf("pos_y: %d\n", (int)d.pos_y);
+	printf("val: %d\n", d.world_map[(int)d.pos_x][(int)d.pos_y]);
+
+	print_map_2d(d.world_map, MAP_WIDTH, MAP_HEIGHT);
 	render(&d);
 	//print_map_1d(d.texture, TEX_HEIGHT, TEX_WIDTH);
 	mlx_key_hook(d.win, key_handler, &d);
