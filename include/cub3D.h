@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 19:42:24 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/10 09:40:56 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@
 # define ESC		53
 # define KEY_7		89	
 # define KEY_8		91
-# define KEY_UP		13
-# define KEY_DOWN	1
-# define KEY_LEFT	0
-# define KEY_RIGHT	2
+# define KEY_W		13
+# define KEY_S	1
+# define KEY_A	0
+# define KEY_D	2
+# define KEY_RIGHT_ARROW	124
+# define KEY_LEFT_ARROW		123
 
 typedef struct s_data
 {
