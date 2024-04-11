@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/10 09:45:18 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/11 09:12:40 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	*init_texture(void)
 		{
 			ycolor = y * 256 / TEX_HEIGHT;
 			//ycolor++;
-			texture[TEX_WIDTH * y + x] = 100;
+			texture[TEX_WIDTH * y + x] = 190;
 		}
 		y = -1;
 	}

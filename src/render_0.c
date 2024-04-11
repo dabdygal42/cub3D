@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/09 21:35:51 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/11 09:18:01 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ static void	fill_img_buffer(t_data *d, int x)
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
 		color = d->texture[TEX_HEIGHT * tex_y + d->tex_x];
-		d->buf[y * d->l_bytes + (x) * 4] = color;
+		if (d->side == 1)
+			color = (color >> 1) & 8355711;
+		d->buf[y * d->l_bytes + x * 4] = color;
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/10 09:41:38 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/11 10:41:58 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	key_handler(int key, t_data *d)
 	double	old_dir;
 	double	old_plane_x;
 
-	printf("key num: %d\n", key);
+	//printf("key num: %d\n", key);
 
 	if (key == ESC)
 		close_window();
@@ -34,6 +34,20 @@ int	key_handler(int key, t_data *d)
 			d->pos_x -= d->dir_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y - d->dir_y * d->move_speed)] == 0)
 			d->pos_y -= d->dir_y * d->move_speed;
+	}
+	if (key == KEY_D)
+	{
+		if (d->world_map[(int)(d->pos_x + d->plane_x * d->move_speed)][(int)d->pos_y] == 0)
+			d->pos_x += d->plane_x * d->move_speed;
+		if (d->world_map[(int)d->pos_x][(int)(d->pos_y + d->dir_y * d->move_speed)] == 0)
+			d->pos_y += d->plane_y * d->move_speed;
+	}
+	if (key == KEY_A)
+	{
+		if (d->world_map[(int)(d->pos_x - d->plane_x * d->move_speed)][(int)d->pos_y] == 0)
+			d->pos_x -= d->plane_x * d->move_speed;
+		if (d->world_map[(int)d->pos_x][(int)(d->pos_y - d->plane_y * d->move_speed)] == 0)
+			d->pos_y -= d->plane_y * d->move_speed;
 	}
 	if (key == KEY_LEFT_ARROW)
 	{
