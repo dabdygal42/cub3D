@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/11 09:12:40 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:47:13 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static int	*init_texture(void)
 {
 	int	*texture;
 	int	x, y;
-	int	ycolor;
 
 	texture = (int *)malloc(TEX_WIDTH * TEX_HEIGHT * sizeof(int));
 	if (texture == NULL)
@@ -82,14 +81,11 @@ static int	*init_texture(void)
 	}
 	x = -1;
 	y = -1;
-	ycolor = 0;
 	while (++x < TEX_WIDTH)
 	{
 		while (++y < TEX_HEIGHT)
 		{
-			ycolor = y * 256 / TEX_HEIGHT;
-			//ycolor++;
-			texture[TEX_WIDTH * y + x] = 190;
+			texture[TEX_WIDTH * y + x] = 65536 * 254 * (x != y && x != TEX_WIDTH - y);
 		}
 		y = -1;
 	}
@@ -113,6 +109,8 @@ void	init(t_data *d)
 	d->plane_x = 0.0;
 	d->plane_y = 0.7;
 	d->time = get_time();
-	d->view_shift = 100;
+	d->view_shift = 0;
 	d->texture = init_texture();
+	d->ceiling_color = 0x6fecf7;
+	d->floor_color = 0x3f8239;
 }

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/11 09:18:01 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:42:54 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,13 @@ static void	fill_img_buffer(t_data *d, int x)
 		color = d->texture[TEX_HEIGHT * tex_y + d->tex_x];
 		if (d->side == 1)
 			color = (color >> 1) & 8355711;
-		d->buf[y * d->l_bytes + x * 4] = color;
+		plot(x, y, d, color);	
 		y++;
 	}
 }
 
 static void	draw_strip(t_data *d, int x)
 {
-
 	d->tex_num = d->world_map[d->map_x][d->map_y] - 1;
 	if (d->side == 0)
 		d->wall_x = d->pos_y + d->perp_wall_dist * d->ray_dir_y;
@@ -103,12 +102,28 @@ static void	draw_strip(t_data *d, int x)
 		d->wall_x = d->pos_x + d->perp_wall_dist * d->ray_dir_x;
 	d->wall_x -= floor(d->wall_x);
 	d->tex_x = (int)(d->wall_x * (double)TEX_WIDTH);
-	//why in both cases the assignment is the same?
 	if (d->side == 0 && d->ray_dir_x > 0)
 		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
 	if (d->side == 1 && d->ray_dir_y < 0)
 		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
 	fill_img_buffer(d, x);
+}
+
+static void	draw_floor_and_ceiling(t_data *d)
+{
+	int	x, y, end;
+
+	x = -1;
+	y = -1;
+	end = d->buf_size / 2;
+	while (++x < SCREEN_WIDTH)
+	{
+		while (++y < SCREEN_HEIGHT / 2)
+			plot (x, y, d, d->ceiling_color);
+		while (++y < SCREEN_HEIGHT)
+			plot (x, y, d, d->floor_color);
+		y = 0;
+	}
 }
 
 void	render(t_data *d)
@@ -121,7 +136,9 @@ void	render(t_data *d)
 		d->buf = mlx_get_data_addr(d->img, &d->pix_bits, &d->l_bytes, &d->endi);
 		d->buf_size = d->screen_height * d->l_bytes;
 	}
-	ft_bzero(d->buf, d->buf_size);
+	//ft_bzero(d->buf, d->buf_size);
+	draw_floor_and_ceiling(d);
+	//ft_memset(d->buf, d->ceiling_color, d->buf_size);
 	x = -1;
 	d->time = get_time();
 	while (++x < SCREEN_WIDTH)

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/11 14:27:19 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:36:41 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,15 @@ typedef struct s_data
 	long double	frame_time;
 	double	move_speed;
 	double	rot_speed;
+	int		floor_color;
+	int		ceiling_color;
 }	t_data;
 
 void		init(t_data *d);
 void		render(t_data *d);
 void		run_dda(t_data *d);
 void		get_move_rot_speeds(t_data *d);
+void		plot(int x, int y, t_data *d, int color);
 
 //hooks
 int			close_window(void);
