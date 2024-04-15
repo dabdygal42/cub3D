@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/12 14:36:41 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 21:25:13 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 # define SCREEN_WIDTH	1200	
 # define SCREEN_HEIGHT	800
-# define TEX_WIDTH		64	
-# define TEX_HEIGHT		64	
+# define TEX_WIDTH		256	
+# define TEX_HEIGHT		256	
 # define MAP_WIDTH		24
 # define MAP_HEIGHT		24
 
@@ -40,58 +40,71 @@
 # define KEY_RIGHT_ARROW	124
 # define KEY_LEFT_ARROW		123
 
-typedef struct s_data
+typedef struct s_texture
 {
-	void	*mlx;
-	void	*win;
+	int		height;
+	int		width;
+	void	*img;
+	char	*path;
+	char	*buf;
 	int		pix_bits;
 	int		l_bytes;
 	int		endi;
-	void	*img;
-	char	*buf;
-	int		buf_size;
-	int		map_width;
-	int		map_heigth;
-	int		screen_width;
-	int		screen_height;
-	int		**world_map;
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;	
-	double	plane_x;
-	double	plane_y;
-	LONG	time;
-	LONG	old_time;
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	int		map_x;
-	int		map_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	perp_wall_dist;
-	int		step_x;
-	int		step_y;
-	int		side;
-	int		line_height;
-	int		view_shift;
-	int		draw_start;
-	int		draw_end;
-	int		tex_num;
-	double	wall_x;
-	int		tex_x;
-	int		*texture;
+}	t_texture;
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+	int			pix_bits;
+	int			l_bytes;
+	int			endi;
+	void		*img;
+	char		*buf;
+	int			buf_size;
+	int			map_width;
+	int			map_heigth;
+	int			screen_width;
+	int			screen_height;
+	int			**world_map;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;	
+	double		plane_x;
+	double		plane_y;
+	LONG		time;
+	LONG		old_time;
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			side;
+	int			line_height;
+	int			view_shift;
+	int			draw_start;
+	int			draw_end;
+	int			tex_num;
+	double		wall_x;
+	int			tex_x;
+	int			*texture;
 	long double	frame_time;
-	double	move_speed;
-	double	rot_speed;
-	int		floor_color;
-	int		ceiling_color;
+	double		move_speed;
+	double		rot_speed;
+	int			floor_color;
+	int			ceiling_color;
+	t_texture	*xpm_tex;
 }	t_data;
 
-void		init(t_data *d);
+void		init(t_data *d, char *path);
 void		render(t_data *d);
 void		run_dda(t_data *d);
 void		get_move_rot_speeds(t_data *d);

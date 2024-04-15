@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/12 15:42:54 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 21:39:10 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ static void	fill_img_buffer(t_data *d, int x)
 {
 	int		y;
 	int		tex_y;
-	int		color;
-	int		step;
+	//int		color;
+	double		step;
 	double	tex_pos;
+	int		pix;
 
 	y = d->draw_start;
 	step = 1.0 * (int)TEX_HEIGHT / d->line_height;
@@ -85,10 +86,15 @@ static void	fill_img_buffer(t_data *d, int x)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step;
-		color = d->texture[TEX_HEIGHT * tex_y + d->tex_x];
-		if (d->side == 1)
-			color = (color >> 1) & 8355711;
-		plot(x, y, d, color);	
+		//color = d->texture[TEX_HEIGHT * tex_y + d->tex_x];
+		//if (d->side == 1)
+			//color = (color >> 1) & 8355711;
+		//plot(x, y, d, color);	
+		pix = y * d->l_bytes + x * 4;
+		d->buf[pix + 0] = d->xpm_tex->buf[d->xpm_tex->l_bytes * tex_y + d->tex_x * 4];
+		d->buf[pix + 1] = d->xpm_tex->buf[d->xpm_tex->l_bytes * tex_y + d->tex_x * 4 + 1];
+		d->buf[pix + 2] = d->xpm_tex->buf[d->xpm_tex->l_bytes * tex_y + d->tex_x * 4 + 2];
+		d->buf[pix + 3] = d->xpm_tex->buf[d->xpm_tex->l_bytes * tex_y + d->tex_x * 4 + 3];
 		y++;
 	}
 }
@@ -102,6 +108,7 @@ static void	draw_strip(t_data *d, int x)
 		d->wall_x = d->pos_x + d->perp_wall_dist * d->ray_dir_x;
 	d->wall_x -= floor(d->wall_x);
 	d->tex_x = (int)(d->wall_x * (double)TEX_WIDTH);
+	//??????????????????????
 	if (d->side == 0 && d->ray_dir_x > 0)
 		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
 	if (d->side == 1 && d->ray_dir_y < 0)

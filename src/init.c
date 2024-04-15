@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/12 15:47:13 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 16:54:46 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,20 @@ static int	*init_texture(void)
 	return (texture);
 }
 
-void	init(t_data *d)
+t_texture *init_xpm(t_data *d, char *path)
+{
+	t_texture	*tex;
+
+	tex = (t_texture *)malloc(sizeof(t_texture));
+	if (tex == NULL)
+		return (NULL);
+	tex->path = path;
+	tex->img = mlx_xpm_file_to_image(d->mlx, path, &tex->width, &tex->height);
+	tex->buf = mlx_get_data_addr(tex->img, &tex->pix_bits, &tex->l_bytes, &tex->endi);
+	return (tex);
+}
+
+void	init(t_data *d, char *path)
 {
 	d->map_width = MAP_WIDTH;
 	d->map_heigth = MAP_HEIGHT;
@@ -113,4 +126,5 @@ void	init(t_data *d)
 	d->texture = init_texture();
 	d->ceiling_color = 0x6fecf7;
 	d->floor_color = 0x3f8239;
+	d->xpm_tex = init_xpm(d, path);
 }
