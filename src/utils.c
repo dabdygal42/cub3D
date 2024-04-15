@@ -6,43 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/09 18:46:34 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 22:55:10 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void print_map_2d(int **arr, int rows, int cols)
-{
-	int	a, b;
-
-	a = -1;
-	b = -1;
-	while (++a < rows)	
-	{
-		while (++b < cols)
-			printf("%d ", arr[a][b]);
-		printf("\n");
-		b = -1;
-	}
-}
-
-void print_map_1d(int *arr, int cols, int rows)
-{
-	int x, y;
-
-	x = -1;
-	y = -1;
-	while (++x < rows)
-	{
-		while (++y < cols)
-			printf ("%d\t", arr[rows * x + y]);
-		printf("\n");
-		y = -1;
-	}
-}
-
-void run_dda(t_data *d)
+void	run_dda(t_data *d)
 {
 	int	hit;
 
