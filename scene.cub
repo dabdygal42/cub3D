@@ -1,5 +1,5 @@
    NO ./content/north.xpm
-		SO	./content/south.xpm
+	SO	./content/south.xpm
 WE ./content/west.xpm
   EA ./content/east.xpm
 F	220,100,0

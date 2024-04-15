@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 16:59:44 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:43:37 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,29 @@ static int	check_open_warn(int argc, char *argv[])
 	return (fd);
 }
 
+static int	assign_texture(char **texture, char *str)
+{
+	int	i;
+
+	if (*texture)
+	{
+		write(STDERR_FILENO, "Error\nElement duplicate\n", 24);
+		return (0);
+	}
+	*texture = ft_strdup(str);
+	if (*texture == NULL)
+	{
+		write(STDERR_FILENO, "Error\n", 6);
+		perror(NULL);
+		return (-1);
+	}
+	i = 0;
+	while ((*texture)[i] && (*texture)[i] != '\n')
+		i++;
+	(*texture)[i] = 0;
+	return (1);
+}
+
 static int	parse_line(char *str, t_g_assets *c)
 {
 	static int	map_done;
@@ -54,12 +77,25 @@ static int	parse_line(char *str, t_g_assets *c)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == 0)
+	if (str[i] == 0 || str[i] == '\n')
 	{
-		if (map_done == 0 && c->row_list)
+		if (map_done == 0 && c->rowlist)
 			map_done = 1;
 		return (1);
 	}
+	if (ft_strncmp(str + i, "NO", 2) == 0 && ft_isspace(str[i + 2]))
+		return (assign_texture(&c->no, str + i + 4));
+	if (ft_strncmp(str + i, "SO", 2) == 0 && ft_isspace(str[i + 2]))
+		return (assign_texture(&c->so, str + i + 4));
+	if (ft_strncmp(str + i, "WE", 2) == 0 && ft_isspace(str[i + 2]))
+		return (assign_texture(&c->we, str + i + 4));
+	if (ft_strncmp(str + i, "EA", 2) == 0 && ft_isspace(str[i + 2]))
+		return (assign_texture(&c->ea, str + i + 4));
+	if (str[i] == 'F' && ft_isspace(str[i + 1]))
+		return (assign_rgb(c->floor_rgb, str + i + 2));
+	if (str[i] == 'C' && ft_isspace(str[i + 1]))
+		return (assign_rgb(c->ceil_rgb, str + i + 2));
+	return (add_mapline(str, c, map_done));
 }
 
 static int	parse_elements(int fd, t_g_assets *content)
@@ -94,7 +130,11 @@ int	parse(int argc, char *argv[], t_g_assets *content)
 	if (fd < 0)
 		return (0);
 	if (parse_elements(fd, content) <= 0)
+	{
+		close(fd);
+		clean_content(content);
 		return (0);
+	}
 	if (close(fd) < 0)
 	{
 		write(STDERR_FILENO, "Error\n", 6);

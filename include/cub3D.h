@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/09 15:49:12 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:44:47 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_data
 typedef struct s_row_list
 {
 	int					*row;
+	int					size;
 	struct s_row_list	*next;
 }	t_row_list;
 
@@ -57,8 +58,8 @@ typedef struct s_game_assets
 	char		*ea;
 	int			floor_rgb[3];
 	int			ceil_rgb[3];
-	int			**map_arr;
-	t_row_list	*row_list;
+	int			**map;
+	t_row_list	*rowlist;
 	int			row_qty;
 	int			col_qty;
 }	t_g_assets;
@@ -72,5 +73,9 @@ int			key_handler(int key, t_data *d);
 
 //parsing
 int			parse(int argc, char *argv[], t_g_assets *content);
+int			assign_rgb(int *rgb, char *str);
+int			add_mapline(char *str, t_g_assets *c, int done);
+int			add_rownode(t_g_assets *c, t_row_list *node);
+void		clean_content(t_g_assets *c);
 
 #endif
