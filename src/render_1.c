@@ -6,13 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:14:51 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/12 14:13:59 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 22:46:57 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void get_move_rot_speeds(t_data *d)
+void	get_move_rot_speeds(t_data *d)
 {
 	d->old_time = d->time;
 	d->time = get_time();
@@ -43,4 +43,62 @@ void	plot(int x, int y, t_data *d, int color)
 			d->buf[pix + 3] = (color >> 24);
 		}
 	}
+}
+
+void	draw_floor_and_ceiling(t_data *d)
+{
+	int	x;
+	int	y;
+	int	end;
+
+	x = -1;
+	y = -1;
+	end = d->buf_size / 2;
+	while (++x < SCREEN_WIDTH)
+	{
+		while (++y < SCREEN_HEIGHT / 2)
+			plot (x, y, d, d->ceiling_color);
+		while (++y < SCREEN_HEIGHT)
+			plot (x, y, d, d->floor_color);
+		y = 0;
+	}
+}
+
+static void	calc_start_end(t_data *d)
+{
+	if (d->side == 0)
+		d->perp_wall_dist = d->side_dist_x - d->delta_dist_x;
+	else
+		d->perp_wall_dist = d->side_dist_y - d->delta_dist_y;
+	d->line_height = (int)(d->screen_height / d->perp_wall_dist);
+	d->draw_start = -d->line_height / 2 + d->screen_height / 2 + d->view_shift;
+	if (d->draw_start < 0)
+		d->draw_start = 0;
+	d->draw_end = d->line_height / 2 + d->screen_height / 2 + d->view_shift;
+	if (d->draw_end >= d->screen_height)
+		d->draw_end = d->screen_height - 1;
+}
+
+void	render(t_data *d)
+{
+	int	x;
+
+	if (!d->img)
+	{
+		d->img = mlx_new_image(d->mlx, d->screen_width, d->screen_height);
+		d->buf = mlx_get_data_addr(d->img, &d->pix_bits, &d->l_bytes, &d->endi);
+		d->buf_size = d->screen_height * d->l_bytes;
+	}
+	draw_floor_and_ceiling(d);
+	x = -1;
+	d->time = get_time();
+	while (++x < SCREEN_WIDTH)
+	{
+		update_vars(x, d);
+		run_dda(d);
+		calc_start_end(d);
+		draw_strip(d, x);
+	}
+	get_move_rot_speeds(d);
+	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 }

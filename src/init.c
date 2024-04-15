@@ -6,13 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/15 16:54:46 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 22:39:46 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int **map_init()
+static int	**map_init(void)
 {
 	int	**outmap;	
 	int	i;
@@ -68,44 +68,28 @@ static int **map_init()
 	return (outmap);
 }
 
-static int	*init_texture(void)
+t_texture	**init_texture(t_data *d, char **path)
 {
-	int	*texture;
-	int	x, y;
+	t_texture	**tex;
+	int			i;
 
-	texture = (int *)malloc(TEX_WIDTH * TEX_HEIGHT * sizeof(int));
-	if (texture == NULL)
+	tex = (t_texture **)malloc(sizeof(t_texture *) * 4);
+	i = -1;
+	while (++i < 4)
+		tex[i] = (t_texture *)malloc(sizeof(t_texture));
+	i = -1;
+	while (++i < 4)
 	{
-		printf("Memory allocation failed in init_texture()\n");
-		return (NULL);
+		tex[i]->path = path[i];
+		tex[i]->img = mlx_xpm_file_to_image(d->mlx, path[i], \
+			&tex[i]->width, &tex[i]->height);
+		tex[i]->buf = mlx_get_data_addr(tex[i]->img, &tex[i]->pix_bits, \
+			&tex[i]->l_bytes, &tex[i]->endi);
 	}
-	x = -1;
-	y = -1;
-	while (++x < TEX_WIDTH)
-	{
-		while (++y < TEX_HEIGHT)
-		{
-			texture[TEX_WIDTH * y + x] = 65536 * 254 * (x != y && x != TEX_WIDTH - y);
-		}
-		y = -1;
-	}
-	return (texture);
-}
-
-t_texture *init_xpm(t_data *d, char *path)
-{
-	t_texture	*tex;
-
-	tex = (t_texture *)malloc(sizeof(t_texture));
-	if (tex == NULL)
-		return (NULL);
-	tex->path = path;
-	tex->img = mlx_xpm_file_to_image(d->mlx, path, &tex->width, &tex->height);
-	tex->buf = mlx_get_data_addr(tex->img, &tex->pix_bits, &tex->l_bytes, &tex->endi);
 	return (tex);
 }
 
-void	init(t_data *d, char *path)
+void	init(t_data *d, char **path)
 {
 	d->map_width = MAP_WIDTH;
 	d->map_heigth = MAP_HEIGHT;
@@ -123,8 +107,7 @@ void	init(t_data *d, char *path)
 	d->plane_y = 0.7;
 	d->time = get_time();
 	d->view_shift = 0;
-	d->texture = init_texture();
 	d->ceiling_color = 0x6fecf7;
 	d->floor_color = 0x3f8239;
-	d->xpm_tex = init_xpm(d, path);
+	d->texture = init_texture(d, path);
 }

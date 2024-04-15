@@ -6,10 +6,9 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/15 21:25:13 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/15 22:47:56 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -95,20 +94,23 @@ typedef struct s_data
 	int			tex_num;
 	double		wall_x;
 	int			tex_x;
-	int			*texture;
 	long double	frame_time;
 	double		move_speed;
 	double		rot_speed;
 	int			floor_color;
 	int			ceiling_color;
-	t_texture	*xpm_tex;
+	t_texture	**texture;
 }	t_data;
 
-void		init(t_data *d, char *path);
+void		init(t_data *d, char **path);
 void		render(t_data *d);
 void		run_dda(t_data *d);
 void		get_move_rot_speeds(t_data *d);
 void		plot(int x, int y, t_data *d, int color);
+void		draw_floor_and_ceiling(t_data *d);
+void		render(t_data *d);
+void		update_vars(int x, t_data *d);
+void		draw_strip(t_data *d, int x);
 
 //hooks
 int			close_window(void);
