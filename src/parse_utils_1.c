@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:34:47 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:10:49 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:28:11 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static int	is_open(t_g_assets *c, int row, int col)
 		return (1);
 	if (c->map[row][col] == ' ')
 		return (1);
-	if (check_char(0, 1) != 1)
-		return (1);
 	return (0);
 }
 
@@ -32,6 +30,8 @@ int	check_map(t_g_assets *c)
 	int	i;
 	int	j;
 
+	if (additional_check(c) < 1)
+		return (0);
 	i = 0;
 	while (i < c->row_qty)
 	{
@@ -43,7 +43,7 @@ int	check_map(t_g_assets *c)
 				if (is_open(c, i - 1, j) || is_open(c, i, j + 1) || \
 				is_open(c, i + 1, j) || is_open(c, i, j - 1))
 				{
-					write(STDERR_FILENO, "Error\nWrong map format\n", 23);
+					write(STDERR_FILENO, "Error\nMap not enclosed\n", 23);
 					return (0);
 				}
 			}

@@ -6,7 +6,7 @@
 #    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/16 16:02:26 by dabdygal         ###   ########.fr        #
+#    Updated: 2024/04/16 16:22:39 by dabdygal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_FILES = main.c	\
 			parse.c \
 			parse_utils_0.c \
 			parse_utils_1.c \
+			parse_utils_2.c \
 			clean_content.c
 
 INCLUDE_DIR = include

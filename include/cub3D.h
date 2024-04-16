@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:07:07 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:22:16 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void		clean_content(t_g_assets *c);
 int			list_to_matrix(t_g_assets *c);
 int			check_map(t_g_assets *c);
 int			check_char(int c, int check);
+int			additional_check(t_g_assets *c);
 
 #endif
