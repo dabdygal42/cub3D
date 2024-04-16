@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:59:59 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/15 17:39:38 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:18:37 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static int	add_rowlist(char *str, t_g_assets *c, int size)
 	}
 	if (add_rownode(c, node) <= 0)
 		return (0);
+	if (node->size > c->col_qty)
+		c->col_qty = node->size;
 	return (1);
 }
 
@@ -85,6 +87,7 @@ int	add_mapline(char *str, t_g_assets *c, int done)
 	}
 	if (add_rowlist(str, c, i) <= 0)
 		return (-1);
+	c->row_qty++;
 	return (1);
 }
 
