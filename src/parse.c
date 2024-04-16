@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:24:37 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:41:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	assign_texture(char **texture, char *str)
 	return (1);
 }
 
-static int	parse_line(char *str, t_g_assets *c)
+static int	parse_line(char *str, t_assets *c)
 {
 	static int	map_done;
 	int			i;
@@ -98,7 +98,7 @@ static int	parse_line(char *str, t_g_assets *c)
 	return (add_mapline(str, c, map_done));
 }
 
-static int	parse_elements(int fd, t_g_assets *content)
+static int	parse_elements(int fd, t_assets *content)
 {
 	char	*str;
 
@@ -126,7 +126,7 @@ static int	parse_elements(int fd, t_g_assets *content)
 	return (1);
 }
 
-int	parse(int argc, char *argv[], t_g_assets *content)
+int	parse(int argc, char *argv[], t_assets *content)
 {
 	int	fd;
 

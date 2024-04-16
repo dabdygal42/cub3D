@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:34:47 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:28:11 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:41:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static int	is_open(t_g_assets *c, int row, int col)
+static int	is_open(t_assets *c, int row, int col)
 {
 	if (row >= c->row_qty || row < 0 || col >= c->col_qty || col < 0)
 		return (1);
@@ -25,7 +25,7 @@ static int	is_open(t_g_assets *c, int row, int col)
 	return (0);
 }
 
-int	check_map(t_g_assets *c)
+int	check_map(t_assets *c)
 {
 	int	i;
 	int	j;
@@ -54,7 +54,7 @@ int	check_map(t_g_assets *c)
 	return (1);
 }
 
-int	add_rownode(t_g_assets *c, t_row_list *node)
+int	add_rownode(t_assets *c, t_row_list *node)
 {
 	t_row_list	*tmp;
 
@@ -70,7 +70,7 @@ int	add_rownode(t_g_assets *c, t_row_list *node)
 	return (1);
 }
 
-static int	init_map(t_g_assets *c)
+static int	init_map(t_assets *c)
 {
 	int	i;
 
@@ -97,7 +97,7 @@ static int	init_map(t_g_assets *c)
 	return (1);
 }
 
-int	list_to_matrix(t_g_assets *c)
+int	list_to_matrix(t_assets *c)
 {
 	int			i;
 	int			j;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
+#    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/16 16:22:39 by dabdygal         ###   ########.fr        #
+#    Updated: 2024/04/16 19:08:13 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,11 @@ SRC_DIR = src
 
 SRC_FILES = main.c	\
 			init.c	\
-			hooks.c	\
-			render.c \
+			hooks_0.c	\
+			hooks_1.c	\
+			render_0.c \
+			render_1.c \
+			utils.c \
 			parse.c \
 			parse_utils_0.c \
 			parse_utils_1.c \

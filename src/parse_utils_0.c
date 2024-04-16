@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils_0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:59:59 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:07:01 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:41:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_char(int c, int check)
 	return (1);
 }
 
-static int	add_rowlist(char *str, t_g_assets *c, int size)
+static int	add_rowlist(char *str, t_assets *c, int size)
 {
 	t_row_list	*node;
 	int			i;
@@ -70,7 +70,7 @@ static int	add_rowlist(char *str, t_g_assets *c, int size)
 	return (1);
 }
 
-int	add_mapline(char *str, t_g_assets *c, int done)
+int	add_mapline(char *str, t_assets *c, int done)
 {
 	int			i;
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   clean_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:48:36 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:02:15 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:41:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cub3d.h"
 
-void	clean_content(t_g_assets *c)
+void	clean_content(t_assets *c)
 {
 	t_row_list	*tmp;
 	t_row_list	*tmp2;

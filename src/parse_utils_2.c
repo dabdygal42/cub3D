@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:18:50 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 16:26:08 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:41:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int	additional_check(t_g_assets *c)
+int	additional_check(t_assets *c)
 {
 	if (c->row_qty == 0)
 	{
