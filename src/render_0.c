@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/16 14:23:50 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/16 16:32:05 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,32 +54,48 @@ void	update_vars(int x, t_data *d)
 	update_vars_(d);
 }
 
+static unsigned char	get_texture_index(t_data *d)
+{
+	unsigned char	i;
+
+	i = 0;
+	if (d->side == 0 && d->pos_x < d->map_x)
+		i = 3;
+	else if (d->side == 0 && d->pos_x > d->map_x)
+		i = 1;
+	else if (d->side == 1 && d->pos_y > d->map_y)
+		i = 2;
+	else if (d->side == 1 && d->pos_y < d->map_y)
+		i = 0;
+	return (i);
+}
+
 static void	fill_strip_buffer(t_data *d, int x)
 {
-	int		y;
-	int		tex_y;
-	double	step;
-	double	tex_pos;
-	int		pix;
+	unsigned char	i;
+	int				y;
+	int				tex_y;
+	double			tex_pos;
+	int				pix;
 
-	y = d->draw_start;
-	step = 1.0 * (int)TEX_HEIGHT / d->line_height;
+	y = d->draw_start - 1;
+	d->step = 1.0 * (int)TEX_HEIGHT / d->line_height;
 	tex_pos = (d->draw_start - d->view_shift - d->screen_height \
-		/ 2 + d->line_height / 2) * step;
-	while (y < d->draw_end)
+		/ 2 + d->line_height / 2) * d->step;
+	i = get_texture_index(d);
+	while (++y < d->draw_end)
 	{
 		tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
-		tex_pos += step;
+		tex_pos += d->step;
 		pix = y * d->l_bytes + x * 4;
-		d->buf[pix + 0] = d->texture[0]->buf[d->texture[0]->l_bytes * tex_y + \
+		d->buf[pix + 0] = d->texture[i]->buf[d->texture[i]->l_bytes * tex_y + \
 			d->tex_x * 4];
-		d->buf[pix + 1] = d->texture[0]->buf[d->texture[0]->l_bytes * tex_y + \
+		d->buf[pix + 1] = d->texture[i]->buf[d->texture[i]->l_bytes * tex_y + \
 			d->tex_x * 4 + 1];
-		d->buf[pix + 2] = d->texture[0]->buf[d->texture[0]->l_bytes * tex_y + \
+		d->buf[pix + 2] = d->texture[i]->buf[d->texture[i]->l_bytes * tex_y + \
 			d->tex_x * 4 + 2];
-		d->buf[pix + 3] = d->texture[0]->buf[d->texture[0]->l_bytes * tex_y + \
+		d->buf[pix + 3] = d->texture[i]->buf[d->texture[i]->l_bytes * tex_y + \
 			d->tex_x * 4 + 3];
-		y++;
 	}
 }
 

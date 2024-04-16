@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/15 23:06:36 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/16 16:31:39 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_data
 	double		perp_wall_dist;
 	int			step_x;
 	int			step_y;
+	double		step;
 	int			side;
 	int			line_height;
 	int			view_shift;

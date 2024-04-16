@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/15 22:39:46 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/16 16:40:06 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,14 @@ void	init(t_data *d, char **path)
 	d->win = mlx_new_window(d->mlx, SCREEN_WIDTH, d->screen_height, "CUB3D");
 	d->img = NULL;
 	d->world_map = map_init();
-	d->pos_x = 21.0;
+	d->pos_x = 22.0;
 	d->pos_y = 11.5;
 	d->dir_x = -1.0;
 	d->dir_y = 0.0;
 	d->plane_x = 0.0;
-	d->plane_y = 0.7;
+	d->plane_y = 0.66;
 	d->time = get_time();
+	d->old_time = 0.0;
 	d->view_shift = 0;
 	d->ceiling_color = 0x6fecf7;
 	d->floor_color = 0x3f8239;
