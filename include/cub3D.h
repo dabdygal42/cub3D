@@ -39,6 +39,28 @@ typedef struct s_texture
 	int		endi;
 }	t_texture;
 
+typedef struct s_row_list
+{
+	int					*row;
+	int					size;
+	struct s_row_list	*next;
+}	t_row_list;
+
+typedef struct s_game_assets
+{
+	//char		*no;
+	//char		*so;
+	//char		*we;
+	//char		*ea;
+	char		**tex_path;
+	int			floor_rgb[3];
+	int			ceil_rgb[3];
+	int			**map;
+	t_row_list	*rowlist;
+	int			row_qty;
+	int			col_qty;
+}	t_assets;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -92,28 +114,9 @@ typedef struct s_data
 	t_texture	**texture;
 }	t_data;
 
-typedef struct s_row_list
-{
-	int					*row;
-	int					size;
-	struct s_row_list	*next;
-}	t_row_list;
 
-typedef struct s_game_assets
-{
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
-	int			floor_rgb[3];
-	int			ceil_rgb[3];
-	int			**map;
-	t_row_list	*rowlist;
-	int			row_qty;
-	int			col_qty;
-}	t_assets;
 
-void		init(t_data *d, char **path);
+void		init(t_data *d, t_assets *content);
 void		render(t_data *d);
 void		run_dda(t_data *d);
 void		get_move_rot_speeds(t_data *d);

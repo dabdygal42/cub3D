@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:48:36 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 19:41:49 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/16 20:26:14 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	clean_content(t_assets *c)
 	t_row_list	*tmp2;
 	int			i;
 
-	ft_free((void *) &c->no);
-	ft_free((void *) &c->so);
-	ft_free((void *) &c->we);
-	ft_free((void *) &c->ea);
+	ft_free((void *) &c->tex_path[0]);
+	ft_free((void *) &c->tex_path[1]);
+	ft_free((void *) &c->tex_path[2]);
+	ft_free((void *) &c->tex_path[3]);
 	tmp = c->rowlist;
 	while (tmp)
 	{
