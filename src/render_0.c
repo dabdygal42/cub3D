@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/15 22:48:04 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:23:50 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	update_vars(int x, t_data *d)
 	update_vars_(d);
 }
 
-static void	fill_img_buffer(t_data *d, int x)
+static void	fill_strip_buffer(t_data *d, int x)
 {
 	int		y;
 	int		tex_y;
@@ -96,5 +96,5 @@ void	draw_strip(t_data *d, int x)
 		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
 	if (d->side == 1 && d->ray_dir_y < 0)
 		d->tex_x = (int)TEX_WIDTH - d->tex_x - 1;
-	fill_img_buffer(d, x);
+	fill_strip_buffer(d, x);
 }
