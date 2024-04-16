@@ -6,14 +6,53 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:34:47 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 14:28:54 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:10:49 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
+
+static int	is_open(t_g_assets *c, int row, int col)
+{
+	if (row >= c->row_qty || row < 0 || col >= c->col_qty || col < 0)
+		return (1);
+	if (c->map[row][col] == ' ')
+		return (1);
+	if (check_char(0, 1) != 1)
+		return (1);
+	return (0);
+}
+
+int	check_map(t_g_assets *c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < c->row_qty)
+	{
+		j = 0;
+		while (j < c->col_qty)
+		{
+			if (c->map[i][j] != ' ' && c->map[i][j] != '1')
+			{
+				if (is_open(c, i - 1, j) || is_open(c, i, j + 1) || \
+				is_open(c, i + 1, j) || is_open(c, i, j - 1))
+				{
+					write(STDERR_FILENO, "Error\nWrong map format\n", 23);
+					return (0);
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 int	add_rownode(t_g_assets *c, t_row_list *node)
 {

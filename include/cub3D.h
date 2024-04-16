@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:57:14 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 13:13:25 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:07:07 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ int			add_mapline(char *str, t_g_assets *c, int done);
 int			add_rownode(t_g_assets *c, t_row_list *node);
 void		clean_content(t_g_assets *c);
 int			list_to_matrix(t_g_assets *c);
+int			check_map(t_g_assets *c);
+int			check_char(int c, int check);
 
 #endif

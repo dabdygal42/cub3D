@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:59:59 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 13:18:37 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:07:01 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	check_char(int c)
+int	check_char(int c, int check)
 {
 	static int	p_found;
 
+	if (check)
+		return (p_found);
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
 		if (p_found)
@@ -81,7 +83,7 @@ int	add_mapline(char *str, t_g_assets *c, int done)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 	{
-		if (check_char(str[i]) <= 0)
+		if (check_char(str[i], 0) <= 0)
 			return (0);
 		i++;
 	}

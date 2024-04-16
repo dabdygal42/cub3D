@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 13:12:53 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:54:08 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ static int	parse_elements(int fd, t_g_assets *content)
 		return (-1);
 	}
 	if (list_to_matrix(content) <= 0)
+		return (0);
+	if (check_map(content) <= 0)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:48:36 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 13:10:20 by dabdygal         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:02:15 by dabdygal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ void	clean_content(t_g_assets *c)
 		tmp = tmp2;
 	}
 	i = 0;
-	while (i < c->row_qty)
+	while (c->map && i < c->row_qty)
 	{
-		ft_free((void *) c->map[i]);
+		if (c->map[i])
+			free(c->map[i]);
 		i++;
 	}
+	if (c->map)
+		free(c->map);
 }

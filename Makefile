@@ -6,7 +6,7 @@
 #    By: dabdygal <dabdygal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/16 14:38:53 by dabdygal         ###   ########.fr        #
+#    Updated: 2024/04/16 16:02:26 by dabdygal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIBMLX_DIR = minilibx_opengl_20191021
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(LIBMLX_DIR) -L$(LIBMLX_DIR) -lmlx -framework OpenGL -framework AppKit -lz
+CFLAGS = -fsanitize=address -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(LIBMLX_DIR) -L$(LIBMLX_DIR) -lmlx -framework OpenGL -framework AppKit -lz
 
 # ************************************RULES*********************************** #
 
