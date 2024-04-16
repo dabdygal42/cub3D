@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/16 20:45:42 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/16 21:08:12 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_texture	**init_texture(t_data *d, t_assets *content)
 	while (++i < 4)
 	{
 		tex[i]->path = content->tex_path[i];
-		tex[i]->img = mlx_xpm_file_to_image(d->mlx, content->tex_path[i], \
+		tex[i]->img = mlx_xpm_file_to_image(d->mlx, tex[i]->path, \
 			&tex[i]->width, &tex[i]->height);
 		tex[i]->buf = mlx_get_data_addr(tex[i]->img, &tex[i]->pix_bits, \
 			&tex[i]->l_bytes, &tex[i]->endi);
