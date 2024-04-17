@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 17:41:46 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 20:04:24 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,9 @@ void	rotate_left(t_data *d, double rad)
 		sin(rad);
 	d->plane_y = old_plane_x * sin(rad) + d->plane_y * \
 		cos(rad);
+}
+
+uint32_t	get_hex_from_rgb(unsigned char r, unsigned char g, unsigned char b)
+{
+	return ((r << 16) | (g << 8) | b);
 }

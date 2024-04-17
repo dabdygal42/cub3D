@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 19:48:46 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 20:12:02 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ void	init_content(t_assets *content)
 	content->col_qty = 0;
 }
 
-void	init(t_data *d, t_assets *content)
+void	init(t_data *d, t_assets *c)
 {
-	d->assets = content;
-	d->map_width = content->col_qty;
-	d->map_heigth = content->row_qty;
+	d->assets = c;
+	d->map_width = c->col_qty;
+	d->map_heigth = c->row_qty;
 	d->screen_height = SCREEN_HEIGHT;
 	d->screen_width = SCREEN_WIDTH;
 	d->mlx = mlx_init();
@@ -109,17 +109,17 @@ void	init(t_data *d, t_assets *content)
 	if (d->win == NULL)
 		printf("ERROR: d->win is NULL\n");
 	d->img = NULL;
-	d->world_map = content->map;
+	d->world_map = c->map;
 	init_player_position(d);
 	d->dir_x = -1.0;
 	d->dir_y = 0.0;
 	d->plane_x = 0.0;
 	d->plane_y = 0.66;
 	init_player_orientation(d);
+	d->ceiling_color = get_hex_from_rgb(c->ceil_rgb[0], c->ceil_rgb[1], c->ceil_rgb[2]);
+	d->floor_color = get_hex_from_rgb(c->floor_rgb[0], c->floor_rgb[1], c->floor_rgb[2]);
 	d->time = get_time();
 	d->old_time = 0.0;
 	d->view_shift = 0;
-	d->ceiling_color = 0x6fecf7;
-	d->floor_color = 0x3f8239;
-	d->texture = init_texture(d, content);
+	d->texture = init_texture(d, c);
 }

@@ -2,8 +2,8 @@ NO ./content/north.xpm
 SO	./content/south.xpm
 WE ./content/west.xpm
 EA ./content/east.xpm
-F 220,100,0
-C 225,30,0
+F 105,171,79
+C 138,216,237
         1111111111111111111111111
         1000000000110000000000001
         10110W00001110000000000001
