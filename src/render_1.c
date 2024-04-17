@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:14:51 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/15 22:46:57 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:38:52 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	get_move_rot_speeds(t_data *d)
 	d->old_time = d->time;
 	d->time = get_time();
 	d->frame_time = (d->time - d->old_time) / 1000.0;
-	d->move_speed = d->frame_time * 50.0;
-	d->rot_speed = d->frame_time * 30.0;
+	d->move_speed = d->frame_time * 5.0;
+	d->rot_speed = d->frame_time * 3.0;
 }
 
 void	plot(int x, int y, t_data *d, int color)

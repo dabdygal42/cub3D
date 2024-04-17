@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 12:53:20 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:36:28 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,19 @@ void	w_s_keys(int key, t_data *d)
 	if (key == KEY_W)
 	{
 		if (d->world_map[(int)(d->pos_x + d->dir_x * \
-			d->move_speed)][(int)d->pos_y] == 0)
+			d->move_speed)][(int)d->pos_y] == 48)
 			d->pos_x += d->dir_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y + \
-			d->dir_y * d->move_speed)] == 0)
+			d->dir_y * d->move_speed)] == 48)
 			d->pos_y += d->dir_y * d->move_speed;
 	}
 	if (key == KEY_S)
 	{
 		if (d->world_map[(int)(d->pos_x - d->dir_x * \
-			d->move_speed)][(int)d->pos_y] == 0)
+			d->move_speed)][(int)d->pos_y] == 48)
 			d->pos_x -= d->dir_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y - d->dir_y * \
-		d->move_speed)] == 0)
+		d->move_speed)] == 48)
 			d->pos_y -= d->dir_y * d->move_speed;
 	}
 }
@@ -76,19 +76,19 @@ void	a_d_keys(int key, t_data *d)
 	if (key == KEY_D)
 	{
 		if (d->world_map[(int)(d->pos_x + d->plane_x * \
-		d->move_speed)][(int)d->pos_y] == 0)
+		d->move_speed)][(int)d->pos_y] == 48)
 			d->pos_x += d->plane_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y + \
-			d->plane_y * d->move_speed)] == 0)
+			d->plane_y * d->move_speed)] == 48)
 			d->pos_y += d->plane_y * d->move_speed;
 	}
 	if (key == KEY_A)
 	{
 		if (d->world_map[(int)(d->pos_x - d->plane_x * \
-			d->move_speed)][(int)d->pos_y] == 0)
+			d->move_speed)][(int)d->pos_y] == 48)
 			d->pos_x -= d->plane_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y - \
-			d->plane_y * d->move_speed)] == 0)
+			d->plane_y * d->move_speed)] == 48)
 			d->pos_y -= d->plane_y * d->move_speed;
 	}
 }
