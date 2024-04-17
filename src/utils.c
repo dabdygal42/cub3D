@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 16:10:38 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:41:46 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,35 @@ void	destroy(t_data *d)
 {
 	(void)d;
 	return ;
+}
+
+void	rotate_right(t_data *d, double rad)
+{
+	double	old_dir;
+	double	old_plane_x;
+
+	old_dir = d->dir_x;
+	d->dir_x = d->dir_x * cos(-rad) - d->dir_y * \
+		sin(-rad);
+	d->dir_y = old_dir * sin(-rad) + d->dir_y * cos(-rad);
+	old_plane_x = d->plane_x;
+	d->plane_x = d->plane_x * cos(-rad) - d->plane_y * \
+		sin(-rad);
+	d->plane_y = old_plane_x * sin(-rad) + d->plane_y * \
+		cos(-rad);
+}
+
+void	rotate_left(t_data *d, double rad)
+{
+	double	old_dir;
+	double	old_plane_x;
+
+	old_dir = d->dir_x;
+	d->dir_x = d->dir_x * cos(rad) - d->dir_y * sin(rad);
+	d->dir_y = old_dir * sin(rad) + d->dir_y * cos(rad);
+	old_plane_x = d->plane_x;
+	d->plane_x = d->plane_x * cos(rad) - d->plane_y * \
+		sin(rad);
+	d->plane_y = old_plane_x * sin(rad) + d->plane_y * \
+		cos(rad);
 }

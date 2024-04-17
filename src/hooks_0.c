@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 16:36:28 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:42:19 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,14 @@
 
 void	right_arrow_key(int key, t_data *d)
 {
-	double	old_dir;
-	double	old_plane_x;
-
 	if (key == KEY_RIGHT_ARROW)
-	{
-		old_dir = d->dir_x;
-		d->dir_x = d->dir_x * cos(-d->rot_speed) - d->dir_y * \
-			sin(-d->rot_speed);
-		d->dir_y = old_dir * sin(-d->rot_speed) + d->dir_y * cos(-d->rot_speed);
-		old_plane_x = d->plane_x;
-		d->plane_x = d->plane_x * cos(-d->rot_speed) - d->plane_y * \
-			sin(-d->rot_speed);
-		d->plane_y = old_plane_x * sin(-d->rot_speed) + d->plane_y * \
-			cos(-d->rot_speed);
-	}
+		rotate_right(d, d->rot_speed);
 }
 
 void	left_arrow_key(int key, t_data *d)
 {
-	double	old_dir;
-	double	old_plane_x;
-
 	if (key == KEY_LEFT_ARROW)
-	{
-		old_dir = d->dir_x;
-		d->dir_x = d->dir_x * cos(d->rot_speed) - d->dir_y * sin(d->rot_speed);
-		d->dir_y = old_dir * sin(d->rot_speed) + d->dir_y * cos(d->rot_speed);
-		old_plane_x = d->plane_x;
-		d->plane_x = d->plane_x * cos(d->rot_speed) - d->plane_y * \
-			sin(d->rot_speed);
-		d->plane_y = old_plane_x * sin(d->rot_speed) + d->plane_y * \
-			cos(d->rot_speed);
-	}
+		rotate_left(d, d->rot_speed);
 }
 
 void	w_s_keys(int key, t_data *d)

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:52:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:36 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:42:37 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,7 @@ int			check_map(t_assets *c);
 int			check_char(int c, int check);
 int			additional_check(t_assets *c);
 void		init_content(t_assets *content);
+void		rotate_right(t_data *d, double rad);
+void		rotate_left(t_data *d, double rad);
 
 #endif
