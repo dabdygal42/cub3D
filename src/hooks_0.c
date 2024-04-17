@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/15 23:05:05 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 12:53:20 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	left_arrow_key(int key, t_data *d)
 	{
 		old_dir = d->dir_x;
 		d->dir_x = d->dir_x * cos(d->rot_speed) - d->dir_y * sin(d->rot_speed);
-		d->dir_y = d->dir_x * sin(d->rot_speed) + d->dir_y * cos(d->rot_speed);
+		d->dir_y = old_dir * sin(d->rot_speed) + d->dir_y * cos(d->rot_speed);
 		old_plane_x = d->plane_x;
 		d->plane_x = d->plane_x * cos(d->rot_speed) - d->plane_y * \
 			sin(d->rot_speed);

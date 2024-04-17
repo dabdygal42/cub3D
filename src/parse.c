@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/17 12:08:19 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 13:44:21 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ static int	parse_line(char *str, t_assets *c)
 		return (1);
 	}
 	if (ft_strncmp(str + i, "NO", 2) == 0 && ft_isspace(str[i + 2]))
-		return (assign_texture(&c->tex_path[0], str + i + 4));
+		return (assign_texture(&c->tex_path[0], str + i + 3));
 	if (ft_strncmp(str + i, "SO", 2) == 0 && ft_isspace(str[i + 2]))
-		return (assign_texture(&c->tex_path[2], str + i + 4));
+		return (assign_texture(&c->tex_path[2], str + i + 3));
 	if (ft_strncmp(str + i, "WE", 2) == 0 && ft_isspace(str[i + 2]))
-		return (assign_texture(&c->tex_path[3], str + i + 4));
+		return (assign_texture(&c->tex_path[3], str + i + 3));
 	if (ft_strncmp(str + i, "EA", 2) == 0 && ft_isspace(str[i + 2]))
-		return (assign_texture(&c->tex_path[1], str + i + 4));
+		return (assign_texture(&c->tex_path[1], str + i + 3));
 	if (str[i] == 'F' && ft_isspace(str[i + 1]))
 		return (assign_rgb(c->floor_rgb, str + i + 2));
 	if (str[i] == 'C' && ft_isspace(str[i + 1]))

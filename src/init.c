@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 12:13:03 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:24:49 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,9 @@ t_texture	**init_texture(t_data *d, t_assets *content)
 	while (++i < 4)
 	{
 		tex[i]->path = content->tex_path[i];
-		tex[i]->img = mlx_xpm_file_to_image(d->mlx, tex[i]->path, \
-			&tex[i]->width, &tex[i]->height);
+		tex[i]->img = mlx_xpm_file_to_image(d->mlx, tex[i]->path, &tex[i]->width, &tex[i]->height);
+		if (tex[i]->img == NULL)
+			printf ("ERROR: tex[i]->img is NULL\n");
 		tex[i]->buf = mlx_get_data_addr(tex[i]->img, &tex[i]->pix_bits, \
 			&tex[i]->l_bytes, &tex[i]->endi);
 	}
@@ -117,7 +118,11 @@ void	init(t_data *d, t_assets *content)
 	d->screen_height = SCREEN_HEIGHT;
 	d->screen_width = SCREEN_WIDTH;
 	d->mlx = mlx_init();
+	if (d->mlx == NULL)
+		printf("ERROR: d->mlx is NULL\n");
 	d->win = mlx_new_window(d->mlx, SCREEN_WIDTH, d->screen_height, "CUB3D");
+	if (d->win == NULL)
+		printf("ERROR: d->win is NULL\n");
 	d->img = NULL;
 	d->world_map = content->map;
 	d->pos_x = 22.0;

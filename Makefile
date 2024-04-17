@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/16 19:08:13 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/17 13:11:47 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ SRC_FILES = main.c	\
 			hooks_1.c	\
 			render_0.c \
 			render_1.c \
-			utils.c \
-			parse.c \
-			parse_utils_0.c \
-			parse_utils_1.c \
-			parse_utils_2.c \
-			clean_content.c
+			clean_content.c	\
+			parse_utils_0.c	\
+			parse_utils_1.c	\
+			parse_utils_2.c 	\
+			parse.c 	\
+			utils.c
 
 INCLUDE_DIR = include
 
