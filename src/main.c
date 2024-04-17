@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/17 14:49:05 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:14:01 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	print_content(&content);
 	init(&data, &content);
+	printf("X pos: %f\n", data.pos_x);
+	printf("Y pos: %f\n", data.pos_y);
 	render(&data);
 	mlx_key_hook(data.win, key_handler, &data);
 	mlx_hook(data.win, 17, 0, close_window, NULL);

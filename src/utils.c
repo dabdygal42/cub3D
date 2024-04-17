@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/15 22:55:10 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:10:38 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	run_dda(t_data *d)
 			d->map_y += d->step_y;
 			d->side = 1;
 		}
-		if (d->world_map[d->map_x][d->map_y] > 0)
+		if (d->world_map[d->map_x][d->map_y] == 49)
 			hit = 1;
 	}
 }

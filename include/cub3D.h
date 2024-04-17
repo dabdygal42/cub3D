@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:52:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 12:52:44 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:08:36 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 # define KEY_7		89	
 # define KEY_8		91
 # define KEY_W		13
-# define KEY_S	1
-# define KEY_A	0
-# define KEY_D	2
+# define KEY_S		1
+# define KEY_A		0
+# define KEY_D		2
 # define KEY_RIGHT_ARROW	124
 # define KEY_LEFT_ARROW		123
 
@@ -60,10 +60,6 @@ typedef struct s_row_list
 
 typedef struct s_game_assets
 {
-	//char		*no;
-	//char		*so;
-	//char		*we;
-	//char		*ea;
 	char		**tex_path;
 	int			floor_rgb[3];
 	int			ceil_rgb[3];

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 14:48:44 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:18:23 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ static void	init_player_position(t_data *d)
 	int	l;
 
 	i = 0;
-	j = 0;
 	while (++i < d->map_heigth - 1)
 	{
+		j = 0;
 		while (++j < d->map_width - 1)
 		{
 			l = d->world_map[i][j];
@@ -111,7 +111,6 @@ static void	init_player_position(t_data *d)
 				return ;
 			}
 		}
-		j = 0;
 	}
 }
 
