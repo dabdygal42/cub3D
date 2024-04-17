@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 20:12:02 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 21:00:26 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	init_player_position(t_data *d)
 			l = d->world_map[i][j];
 			if (l == 'N' || l == 'E' || l == 'S' || l == 'W')
 			{
-				d->pos_x = i;
-				d->pos_y = j;
+				d->pos_x = i + 0.5;
+				d->pos_y = j + 0.5;
 				return ;
 			}
 		}
