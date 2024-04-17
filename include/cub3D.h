@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:52:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 17:42:37 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 19:39:06 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,6 @@ void		draw_strip(t_data *d, int x);
 //hooks
 int			close_window(void);
 int			key_handler(int key, t_data *d);
-void		right_arrow_key(int key, t_data *d);
-void		left_arrow_key(int key, t_data *d);
-void		w_s_keys(int key, t_data *d);
-void		a_d_keys(int key, t_data *d);
 
 //utils
 int			error_msg(char *str, t_data *data);

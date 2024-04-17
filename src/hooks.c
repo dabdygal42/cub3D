@@ -1,69 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_0.c                                          :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 17:42:19 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 19:38:56 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	right_arrow_key(int key, t_data *d)
-{
-	if (key == KEY_RIGHT_ARROW)
-		rotate_right(d, d->rot_speed);
-}
-
-void	left_arrow_key(int key, t_data *d)
-{
-	if (key == KEY_LEFT_ARROW)
-		rotate_left(d, d->rot_speed);
-}
-
-void	w_s_keys(int key, t_data *d)
+static void	w_s_keys(int key, t_data *d)
 {
 	if (key == KEY_W)
 	{
 		if (d->world_map[(int)(d->pos_x + d->dir_x * \
-			d->move_speed)][(int)d->pos_y] == 48)
+			d->move_speed)][(int)d->pos_y] != '1')
 			d->pos_x += d->dir_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y + \
-			d->dir_y * d->move_speed)] == 48)
+			d->dir_y * d->move_speed)] != '1')
 			d->pos_y += d->dir_y * d->move_speed;
 	}
 	if (key == KEY_S)
 	{
 		if (d->world_map[(int)(d->pos_x - d->dir_x * \
-			d->move_speed)][(int)d->pos_y] == 48)
+			d->move_speed)][(int)d->pos_y] != '1')
 			d->pos_x -= d->dir_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y - d->dir_y * \
-		d->move_speed)] == 48)
+		d->move_speed)] != '1')
 			d->pos_y -= d->dir_y * d->move_speed;
 	}
 }
 
-void	a_d_keys(int key, t_data *d)
+static void	a_d_keys(int key, t_data *d)
 {
 	if (key == KEY_D)
 	{
 		if (d->world_map[(int)(d->pos_x + d->plane_x * \
-		d->move_speed)][(int)d->pos_y] == 48)
+		d->move_speed)][(int)d->pos_y] != '1')
 			d->pos_x += d->plane_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y + \
-			d->plane_y * d->move_speed)] == 48)
+			d->plane_y * d->move_speed)] != '1')
 			d->pos_y += d->plane_y * d->move_speed;
 	}
 	if (key == KEY_A)
 	{
 		if (d->world_map[(int)(d->pos_x - d->plane_x * \
-			d->move_speed)][(int)d->pos_y] == 48)
+			d->move_speed)][(int)d->pos_y] != '1')
 			d->pos_x -= d->plane_x * d->move_speed;
 		if (d->world_map[(int)d->pos_x][(int)(d->pos_y - \
-			d->plane_y * d->move_speed)] == 48)
+			d->plane_y * d->move_speed)] != '1')
 			d->pos_y -= d->plane_y * d->move_speed;
 	}
 }
@@ -71,5 +59,21 @@ void	a_d_keys(int key, t_data *d)
 int	close_window(void)
 {
 	exit(0);
+	return (0);
+}
+
+int	key_handler(int key, t_data *d)
+{
+	if (key == KEY_W || key == KEY_S)
+		w_s_keys(key, d);
+	if (key == KEY_A || key == KEY_D)
+		a_d_keys(key, d);
+	if (key == KEY_LEFT_ARROW)
+		rotate_left(d, d->rot_speed);
+	if (key == KEY_RIGHT_ARROW)
+		rotate_right(d, d->rot_speed);
+	if (key == ESC)
+		close_window();
+	render(d);
 	return (0);
 }

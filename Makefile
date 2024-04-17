@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/17 13:11:47 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/17 19:37:24 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ SRC_DIR = src
 
 SRC_FILES = main.c	\
 			init.c	\
-			hooks_0.c	\
-			hooks_1.c	\
+			hooks.c	\
 			render_0.c \
 			render_1.c \
 			clean_content.c	\

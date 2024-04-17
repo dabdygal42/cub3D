@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 17:24:16 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 19:48:46 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ static void	init_player_orientation(t_data *d)
 		d->dir_x = -1.0;
 		d->dir_y = 0.0;
 	}
+	else if (c == 'E')
+		rotate_right(d, M_PI_2);
 	else if (c == 'S')
-	{
-		d->dir_x = 1.0;
-		d->dir_y = 0.0;
-	}
+		rotate_right(d, M_PI);
+	else if (c == 'W')
+		rotate_right(d, 3 * M_PI_2);
 }
 
 void	init_content(t_assets *content)
@@ -112,9 +113,9 @@ void	init(t_data *d, t_assets *content)
 	init_player_position(d);
 	d->dir_x = -1.0;
 	d->dir_y = 0.0;
-	init_player_orientation(d);
 	d->plane_x = 0.0;
 	d->plane_y = 0.66;
+	init_player_orientation(d);
 	d->time = get_time();
 	d->old_time = 0.0;
 	d->view_shift = 0;
