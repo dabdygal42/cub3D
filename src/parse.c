@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 20:46:06 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 12:08:19 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ static int	parse_elements(int fd, t_assets *content)
 	{
 		if (parse_line(str, content) <= 0)
 		{
+			printf("HERE\n");
 			free(str);
 			return (0);
 		}

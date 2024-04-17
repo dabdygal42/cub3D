@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:05:51 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 20:46:36 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 12:08:44 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	print_content(&content);
 	init(&data, &content);
-	render(&data);
-	mlx_key_hook(data.win, key_handler, &data);
-	mlx_hook(data.win, 17, 0, close_window, NULL);
-	mlx_loop(data.mlx);
+	//render(&data);
+	//mlx_key_hook(data.win, key_handler, &data);
+	//mlx_hook(data.win, 17, 0, close_window, NULL);
+	//mlx_loop(data.mlx);
 	return (EXIT_SUCCESS);
 }

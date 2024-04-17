@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/16 21:08:12 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 12:13:03 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_texture	**init_texture(t_data *d, t_assets *content)
 {
 	t_texture	**tex;
 	int			i;
+
 
 	tex = (t_texture **)malloc(sizeof(t_texture *) * 4);
 	i = -1;
