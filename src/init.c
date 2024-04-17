@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 14:24:49 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:48:44 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,30 @@ t_texture	**init_texture(t_data *d, t_assets *content)
 	return (tex);
 }
 
+static void	init_player_position(t_data *d)
+{
+	int	i;
+	int	j;
+	int	l;
+
+	i = 0;
+	j = 0;
+	while (++i < d->map_heigth - 1)
+	{
+		while (++j < d->map_width - 1)
+		{
+			l = d->world_map[i][j];
+			if (l == 78 || l == 69 || l == 83 || l == 87)
+			{
+				d->pos_x = i;
+				d->pos_y = j;
+				return ;
+			}
+		}
+		j = 0;
+	}
+}
+
 void	init_content(t_assets *content)
 {
 	content->tex_path = (char **)malloc(sizeof(char *) * 4);
@@ -125,8 +149,7 @@ void	init(t_data *d, t_assets *content)
 		printf("ERROR: d->win is NULL\n");
 	d->img = NULL;
 	d->world_map = content->map;
-	d->pos_x = 22.0;
-	d->pos_y = 11.5;
+	init_player_position(d);
 	d->dir_x = -1.0;
 	d->dir_y = 0.0;
 	d->plane_x = 0.0;
