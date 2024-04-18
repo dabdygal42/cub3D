@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/17 16:21:53 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 16:29:01 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 static int	check_open_warn(int argc, char *argv[])
 {
@@ -66,6 +67,11 @@ static int	assign_texture(char **texture, char *str)
 	while ((*texture)[i] && (*texture)[i] != '\n')
 		i++;
 	(*texture)[i] = 0;
+	i = open(*texture, O_RDONLY);
+	if (i < 0 || !ft_strcmp(*texture, ".") || !ft_strcmp(*texture, "/") || \
+	!ft_strcmp(*texture, "./"))
+		return (1 - write(STDERR_FILENO, "Error\nWrong texture file\n", 25));
+	close(i);
 	return (1);
 }
 

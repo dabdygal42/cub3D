@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 19:14:51 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 16:38:52 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:56:23 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	get_move_rot_speeds(t_data *d)
 {
 	d->old_time = d->time;
-	d->time = get_time();
+	d->time = get_time(d);
 	d->frame_time = (d->time - d->old_time) / 1000.0;
 	d->move_speed = d->frame_time * 5.0;
 	d->rot_speed = d->frame_time * 3.0;
@@ -91,7 +91,7 @@ void	render(t_data *d)
 	}
 	draw_floor_and_ceiling(d);
 	x = -1;
-	d->time = get_time();
+	d->time = get_time(d);
 	while (++x < SCREEN_WIDTH)
 	{
 		update_vars(x, d);

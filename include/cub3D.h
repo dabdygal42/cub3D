@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:52:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 20:06:16 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:56:37 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,13 +135,13 @@ void		update_vars(int x, t_data *d);
 void		draw_strip(t_data *d, int x);
 
 //hooks
-int			close_window(void);
+int			close_window(t_data *d);
 int			key_handler(int key, t_data *d);
 
 //utils
-int			error_msg(char *str, t_data *data);
-LONG		get_time(void);
-void		destroy(t_data *d);
+void		error_msg(char *str, t_data *data);
+LONG		get_time(t_data *d);
+void		free_all(t_data *d);
 
 int			parse(int argc, char *argv[], t_assets *content);
 int			assign_rgb(int *rgb, char *str);

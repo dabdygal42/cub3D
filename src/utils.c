@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 16:08:31 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 20:04:24 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:55:35 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,15 @@ void	run_dda(t_data *d)
 	}
 }
 
-LONG	get_time(void)
+LONG	get_time(t_data *d)
 {
 	struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL))
-		return (error_msg("gettimeofday() failed in get_time()\n", NULL));
+	if (gettimeofday(&tv, NULL) == -1)
+		error_msg("gettimeofday() failed in get_time()\n", d);
 	return ((tv.tv_sec * (LONG)1000) + (tv.tv_usec / 1000));
 }
 
-int	error_msg(char *str, t_data *data)
-{
-	printf("%s\n", str);
-	if (data)
-		destroy(data);
-	return (1);
-}
-
-void	destroy(t_data *d)
-{
-	(void)d;
-	return ;
-}
 
 void	rotate_right(t_data *d, double rad)
 {

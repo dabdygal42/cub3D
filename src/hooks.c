@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:19:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 19:38:56 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:44:45 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,28 @@ static void	a_d_keys(int key, t_data *d)
 	}
 }
 
-int	close_window(void)
+int	close_window(t_data *d)
 {
+	free_all(d);
 	exit(0);
 	return (0);
 }
 
 int	key_handler(int key, t_data *d)
 {
-	if (key == KEY_W || key == KEY_S)
-		w_s_keys(key, d);
-	if (key == KEY_A || key == KEY_D)
-		a_d_keys(key, d);
-	if (key == KEY_LEFT_ARROW)
-		rotate_left(d, d->rot_speed);
-	if (key == KEY_RIGHT_ARROW)
-		rotate_right(d, d->rot_speed);
+	if (key != ESC)
+	{
+		if (key == KEY_W || key == KEY_S)
+			w_s_keys(key, d);
+		if (key == KEY_A || key == KEY_D)
+			a_d_keys(key, d);
+		if (key == KEY_LEFT_ARROW)
+			rotate_left(d, d->rot_speed);
+		if (key == KEY_RIGHT_ARROW)
+			rotate_right(d, d->rot_speed);
+		render(d);
+	}
 	if (key == ESC)
-		close_window();
-	render(d);
+		close_window(d);
 	return (0);
 }

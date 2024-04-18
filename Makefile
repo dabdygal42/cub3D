@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/17 19:37:24 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/18 14:02:47 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ SRC_FILES = main.c	\
 			hooks.c	\
 			render_0.c \
 			render_1.c \
-			clean_content.c	\
 			parse_utils_0.c	\
 			parse_utils_1.c	\
 			parse_utils_2.c 	\
 			parse.c 	\
+			free.c 		\
 			utils.c
 
 INCLUDE_DIR = include
@@ -42,7 +42,7 @@ LIBMLX_DIR = minilibx_opengl_20191021
 
 CC = cc
 
-CFLAGS = -fsanitize=address -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(LIBMLX_DIR) -L$(LIBMLX_DIR) -lmlx -framework OpenGL -framework AppKit -lz
+CFLAGS = -fsanitize=address -g -Wall -Wextra -Werror -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(LIBMLX_DIR) -L$(LIBMLX_DIR) -lmlx -framework OpenGL -framework AppKit -lz
 
 # ************************************RULES*********************************** #
 

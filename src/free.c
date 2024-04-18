@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_content.c                                    :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 17:48:36 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/16 20:26:14 by akeryan          ###   ########.fr       */
+/*   Created: 2024/04/18 12:56:14 by akeryan           #+#    #+#             */
+/*   Updated: 2024/04/18 15:47:19 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "cub3d.h"
 
 void	clean_content(t_assets *c)
@@ -19,15 +18,18 @@ void	clean_content(t_assets *c)
 	t_row_list	*tmp2;
 	int			i;
 
-	ft_free((void *) &c->tex_path[0]);
-	ft_free((void *) &c->tex_path[1]);
-	ft_free((void *) &c->tex_path[2]);
-	ft_free((void *) &c->tex_path[3]);
+	free(c->tex_path[0]);
+	free(c->tex_path[1]);
+	free(c->tex_path[2]);
+	free(c->tex_path[3]);
 	tmp = c->rowlist;
 	while (tmp)
 	{
 		tmp2 = tmp->next;
-		ft_free((void *) &tmp);
+		if (tmp->row)
+			free(tmp->row);
+		if (tmp)
+			free(tmp);
 		tmp = tmp2;
 	}
 	i = 0;
@@ -39,4 +41,34 @@ void	clean_content(t_assets *c)
 	}
 	if (c->map)
 		free(c->map);
+}
+
+static void	clean_textures(t_data *d)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		mlx_destroy_image(d->mlx, d->texture[i]->img);
+		free(d->texture[i]);
+	}
+	free(d->texture);
+}
+
+void	error_msg(char *str, t_data *data)
+{
+	printf("%s\n", str);
+	if (data)
+		free_all(data);
+	exit(0);
+}
+
+void	free_all(t_data *d)
+{
+	clean_content(d->assets);
+	clean_textures(d);
+	mlx_destroy_image(d->mlx, d->img);
+	mlx_destroy_window(d->mlx, d->win);
+	return ;
 }
