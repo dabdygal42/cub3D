@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:33:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/17 20:40:17 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 16:51:51 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ static unsigned char	get_texture_index(t_data *d)
 
 	i = 0;
 	if (d->side == 0 && d->pos_x < d->map_x)
-		i = 3;
-	else if (d->side == 0 && d->pos_x > d->map_x)
-		i = 1;
-	else if (d->side == 1 && d->pos_y > d->map_y)
 		i = 2;
-	else if (d->side == 1 && d->pos_y < d->map_y)
+	else if (d->side == 0 && d->pos_x > d->map_x)
 		i = 0;
+	else if (d->side == 1 && d->pos_y > d->map_y)
+		i = 3;
+	else if (d->side == 1 && d->pos_y < d->map_y)
+		i = 1;
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:52:38 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/18 15:56:37 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 17:21:19 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,6 @@ typedef struct s_data
 	t_texture	**texture;
 }	t_data;
 
-
-
 void		init(t_data *d, t_assets *content);
 void		render(t_data *d);
 void		run_dda(t_data *d);
@@ -156,5 +154,6 @@ void		init_content(t_assets *content);
 void		rotate_right(t_data *d, double rad);
 void		rotate_left(t_data *d, double rad);
 uint32_t	get_hex_from_rgb(unsigned char r, unsigned char g, unsigned char b);
+t_texture	**init_texture(t_data *d, t_assets *content);
 
 #endif

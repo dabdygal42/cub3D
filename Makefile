@@ -6,7 +6,7 @@
 #    By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 15:43:23 by dabdygal          #+#    #+#              #
-#    Updated: 2024/04/18 14:02:47 by akeryan          ###   ########.fr        #
+#    Updated: 2024/04/18 17:17:19 by akeryan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ BIN_NAME = cub3d
 SRC_DIR = src
 
 SRC_FILES = main.c	\
-			init.c	\
+			init_0.c	\
+			init_1.c	\
 			hooks.c	\
 			render_0.c \
 			render_1.c \

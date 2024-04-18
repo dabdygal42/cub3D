@@ -1,39 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:20:35 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/18 15:56:11 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 17:19:45 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-t_texture	**init_texture(t_data *d, t_assets *content)
-{
-	t_texture	**tex;
-	int			i;
-
-
-	tex = (t_texture **)malloc(sizeof(t_texture *) * 4);
-	i = -1;
-	while (++i < 4)
-		tex[i] = (t_texture *)malloc(sizeof(t_texture));
-	i = -1;
-	while (++i < 4)
-	{
-		tex[i]->path = content->tex_path[i];
-		tex[i]->img = mlx_xpm_file_to_image(d->mlx, tex[i]->path, &tex[i]->width, &tex[i]->height);
-		if (tex[i]->img == NULL)
-			error_msg("ERROR: tex[i]->img is NULL", d);
-		tex[i]->buf = mlx_get_data_addr(tex[i]->img, &tex[i]->pix_bits, \
-			&tex[i]->l_bytes, &tex[i]->endi);
-	}
-	return (tex);
-}
 
 static void	init_player_position(t_data *d)
 {
@@ -63,7 +40,7 @@ static void	init_player_orientation(t_data *d)
 	char	c;
 
 	c = d->world_map[(int)d->pos_x][(int)d->pos_y];
-	if ( c == 'N')
+	if (c == 'N')
 	{
 		d->dir_x = -1.0;
 		d->dir_y = 0.0;
@@ -95,6 +72,14 @@ void	init_content(t_assets *content)
 	content->col_qty = 0;
 }
 
+void	init_ceiling_and_floor(t_data *d, t_assets *c)
+{
+	d->ceiling_color = get_hex_from_rgb(c->ceil_rgb[0], \
+		c->ceil_rgb[1], c->ceil_rgb[2]);
+	d->floor_color = get_hex_from_rgb(c->floor_rgb[0], \
+		c->floor_rgb[1], c->floor_rgb[2]);
+}
+
 void	init(t_data *d, t_assets *c)
 {
 	d->assets = c;
@@ -116,8 +101,7 @@ void	init(t_data *d, t_assets *c)
 	d->plane_x = 0.0;
 	d->plane_y = 0.66;
 	init_player_orientation(d);
-	d->ceiling_color = get_hex_from_rgb(c->ceil_rgb[0], c->ceil_rgb[1], c->ceil_rgb[2]);
-	d->floor_color = get_hex_from_rgb(c->floor_rgb[0], c->floor_rgb[1], c->floor_rgb[2]);
+	init_ceiling_and_floor(d, c);
 	d->time = get_time(d);
 	d->old_time = 0.0;
 	d->view_shift = 0;

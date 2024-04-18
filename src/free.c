@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 12:56:14 by akeryan           #+#    #+#             */
-/*   Updated: 2024/04/18 15:47:19 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 17:12:59 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,10 @@ void	clean_content(t_assets *c)
 			free(tmp);
 		tmp = tmp2;
 	}
-	i = 0;
-	while (c->map && i < c->row_qty)
-	{
+	i = -1;
+	while (c->map && ++i < c->row_qty)
 		if (c->map[i])
 			free(c->map[i]);
-		i++;
-	}
 	if (c->map)
 		free(c->map);
 }

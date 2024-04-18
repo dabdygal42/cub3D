@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:09:29 by dabdygal          #+#    #+#             */
-/*   Updated: 2024/04/18 16:29:01 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/04/18 17:11:09 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ static int	assign_texture(char **texture, char *str)
 	int	i;
 
 	if (*texture)
-	{
-		write(STDERR_FILENO, "Error\nElement duplicate\n", 24);
-		return (0);
-	}
+		return (1 - write(STDERR_FILENO, "Error\nElement duplicate\n", 24));
 	*texture = ft_strdup(str);
 	if (*texture == NULL)
 	{
@@ -68,9 +65,12 @@ static int	assign_texture(char **texture, char *str)
 		i++;
 	(*texture)[i] = 0;
 	i = open(*texture, O_RDONLY);
-	if (i < 0 || !ft_strcmp(*texture, ".") || !ft_strcmp(*texture, "/") || \
-	!ft_strcmp(*texture, "./"))
+	if (i < 0 || read(i, str, 1) < 0)
+	{
+		if (i >= 0)
+			close(i);
 		return (1 - write(STDERR_FILENO, "Error\nWrong texture file\n", 25));
+	}
 	close(i);
 	return (1);
 }
